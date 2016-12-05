@@ -1,4 +1,3 @@
-
 Professional Gift Card Server
 
 Why call this system a professional server? Because this system is a reduced function version 
@@ -16,6 +15,7 @@ This server has:
           Encryption of important merchant data
 
 Gift Card Functions Supported:
+
      Receive cards into inventory
      Ship cards to merchant
      Gift Activate (put value on card)
@@ -26,19 +26,20 @@ Gift Card Functions Supported:
      End of Day Detail Report
 
 Management Screens
+
      Create Merchant
      Edit Merchant
      Allow the merchant to edit some data
-	 Pricing allows for per transaction pricing
-	 Merchant Billing
-
+     Pricing allows for per transaction pricing
+     Merchant Billing
+ 
 Merchants can manage clerk sign ons
      
 It logs everything in multiple formats so that errors can be tracked down and monitored
+
 	All log in attempts
-	All successful transactions
-	All failed transactions
-	All execution errors
+  	All successful transactions
+	All failed transactions	All execution errors
 
 Three tier architecture with controllers instantiating business objects and 
 calling methods which call Data Access Objects to manipulate the database.
@@ -66,10 +67,13 @@ this reduced system. We can also add other custom functions to this system.
 
 What does our commercial version have that is not in the reduced version?
 Gift Card Functions supported in commercial version but not the reduced version:
-     Card Top Up
-     Card Balance Inquiry
-     Transaction Void
-     Balance Transfers
+
+    Card Top Up
+    Card Balance Inquiry
+    Transaction Void
+
+Other features
+
      Support for chains
      Support for merchant groups such as a mall
      Support for Agents and Sub Agents who are reselling the service
@@ -82,6 +86,7 @@ Gift Card Functions supported in commercial version but not the reduced version:
      that some POS terminals need. 
 
 Loyalty functions
+
 	Loyalty Register Cardholder
 	Loyalty log Sale Transaction
 		With possible rewards issued on this sale
@@ -89,20 +94,28 @@ Loyalty functions
 		With possible coupon granted on this sale
 	Loyalty Return Transaction
 	Loyalty Balance Inquiry
-		With possible redeem of reward
+
+                With possible redeem of reward
 	Loyalty Management screens
-		Multiple ways that you can define how points are awarded
+
+                Multiple ways that you can define how points are awarded
 		Multiple ways that rewards can be defined and awarded
 		Multiple ways that prizes can be awarded
 		Coupon management
 Loyalty Reports
+
 End of Day reports – summary and detail
+
 Customer Ranking Report
+
 Differential Ranking Report
+
 Loyalty Analytics
-	Revenue, Frequency, Monetary (RFM) Ranking and Reporting
+
+        Revenue, Frequency, Monetary (RFM) Ranking and Reporting
 	RFM Charting
 	Coupon response reporting
+
 Logging of the errors to different tables in the database instead of text files so that a 
 dashboard could be written to monitor activity in real time. 
 

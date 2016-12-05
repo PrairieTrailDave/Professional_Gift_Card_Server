@@ -1,0 +1,67 @@
+﻿@model Professional_Gift_Card_System.Models.AdministratorSetupModel
+
+@{
+    ViewBag.Title = "AddSystemAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Add System Admin</h2>
+
+<p>
+    Please enter the username, password, and second password for the system administrator.
+</p>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+    <fieldset>
+        <legend>System Administrator's Account Information</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RepeatPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RepeatPassword)
+            @Html.ValidationMessageFor(model => model.RepeatPassword)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecondPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecondPassword)
+            @Html.ValidationMessageFor(model => model.SecondPassword)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RepeatSecondPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RepeatSecondPassword)
+            @Html.ValidationMessageFor(model => model.RepeatSecondPassword)
+        </div>
+
+        <p>
+            <input type="submit" value="Create System Admin with these" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Main Page", "Index", "Administration")
+</div>

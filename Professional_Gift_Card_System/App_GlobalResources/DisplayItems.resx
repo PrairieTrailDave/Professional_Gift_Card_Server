@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activate" xml:space="preserve">
+    <value>Activate</value>
+    <comment>used on button</comment>
+  </data>
+  <data name="ActivateACard" xml:space="preserve">
+    <value>Activate A Card</value>
+  </data>
+  <data name="ActivateAmount" xml:space="preserve">
+    <value>Amount To Put On Card</value>
+  </data>
+  <data name="ActivateCardSwipe" xml:space="preserve">
+    <value>Swipe Card to activate</value>
+  </data>
+  <data name="ActivateUnsuccessfull" xml:space="preserve">
+    <value>Activate was unsuccessful. Please correct the errors and try again.</value>
+  </data>
+  <data name="AmountToPutOnCard" xml:space="preserve">
+    <value>Amount to put on the card</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="BalanceInquiry" xml:space="preserve">
+    <value>Balance Inquiry</value>
+  </data>
+  <data name="BalanceTransfer" xml:space="preserve">
+    <value>Gift Balance Transfer</value>
+  </data>
+  <data name="ClerkID" xml:space="preserve">
+    <value>Clerk ID</value>
+  </data>
+  <data name="DoInquiry" xml:space="preserve">
+    <value>Do Inquiry</value>
+  </data>
+  <data name="GiftReturn" xml:space="preserve">
+    <value>Gift Return</value>
+    <comment>page title</comment>
+  </data>
+  <data name="GiftSale" xml:space="preserve">
+    <value>Gift Sale</value>
+  </data>
+  <data name="Inquiry" xml:space="preserve">
+    <value>Inquiry</value>
+  </data>
+  <data name="InquiryCardSwipe" xml:space="preserve">
+    <value>Swipe Card for Inquiry</value>
+  </data>
+  <data name="Loyalty" xml:space="preserve">
+    <value>Loyalty</value>
+  </data>
+  <data name="LoyaltyReturn" xml:space="preserve">
+    <value>Loyalty Return</value>
+  </data>
+  <data name="LoyaltySaleCouponUsed" xml:space="preserve">
+    <value>Coupon Used</value>
+  </data>
+  <data name="LoyaltySaleInvoiceNumber" xml:space="preserve">
+    <value>Invoice Number</value>
+  </data>
+  <data name="MerchantID" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Enter Phone Number</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="ReturnAmount" xml:space="preserve">
+    <value>Amount of Return</value>
+  </data>
+  <data name="ReturnCardSwipe" xml:space="preserve">
+    <value>Swipe Card for return</value>
+  </data>
+  <data name="ReturnReason" xml:space="preserve">
+    <value>Reason for return</value>
+  </data>
+  <data name="ReturnValueToCard" xml:space="preserve">
+    <value>Return an item paid for by gift card</value>
+  </data>
+  <data name="Sale" xml:space="preserve">
+    <value>Sale</value>
+  </data>
+  <data name="SaleAmount" xml:space="preserve">
+    <value>Amount of Sale</value>
+  </data>
+  <data name="SaleCardSwipe" xml:space="preserve">
+    <value>Swipe Card to sell from</value>
+  </data>
+  <data name="SaleDescription" xml:space="preserve">
+    <value>Description of Sale</value>
+  </data>
+  <data name="SellFromCard" xml:space="preserve">
+    <value>Sell From Card</value>
+  </data>
+  <data name="SwipeAndFill" xml:space="preserve">
+    <value>Swipe a card and fill out the rest</value>
+  </data>
+  <data name="TopUp" xml:space="preserve">
+    <value>Top Up</value>
+  </data>
+  <data name="TopUpAmount" xml:space="preserve">
+    <value>Amount to add to card</value>
+  </data>
+  <data name="TopUpCardSwipe" xml:space="preserve">
+    <value>Swipe Card to Top Up</value>
+  </data>
+  <data name="TopUpDescription" xml:space="preserve">
+    <value>Description of Top Up</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="TransferFromCardSwipe" xml:space="preserve">
+    <value>Swipe Card to Transfer From</value>
+  </data>
+  <data name="TransferReason" xml:space="preserve">
+    <value>Reason for Balance Transfer</value>
+  </data>
+  <data name="TransferToCardSwipe" xml:space="preserve">
+    <value>Swipe Card to Transfer to</value>
+  </data>
+  <data name="Void" xml:space="preserve">
+    <value>Void</value>
+  </data>
+  <data name="VoidAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="VoidCardNumber" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+  <data name="VoidDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="VoidQuestion" xml:space="preserve">
+    <value>Are you sure that you want to void this transaction?</value>
+  </data>
+  <data name="VoidReason" xml:space="preserve">
+    <value>Reason for the Void</value>
+  </data>
+  <data name="VoidThis" xml:space="preserve">
+    <value>Void This</value>
+  </data>
+  <data name="VoidTransactionDateTime" xml:space="preserve">
+    <value>Transaction Date &amp; Time</value>
+  </data>
+  <data name="VoidTransactionType" xml:space="preserve">
+    <value>Transaction Type</value>
+  </data>
+  <data name="WasUnsuccessful" xml:space="preserve">
+    <value>was unsuccessful. Please correct the errors and try again.</value>
+  </data>
+</root>

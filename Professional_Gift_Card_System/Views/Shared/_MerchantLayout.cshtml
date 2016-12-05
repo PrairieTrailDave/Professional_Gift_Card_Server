@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/themes/base/css")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+                <ul class="navbar-default navbar-nav">
+                    <li>Welcome <strong>@User.Identity.Name</strong>![ @Html.ActionLink("Log Off", "LogOff", "Account") ]</li>
+                        <li>@Html.ActionLink("Home", "Index", "MerchantTrans")</li>
+                </ul>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div id="title">
+            <h2>@Session["Who"] Transactions for Gift and Loyalty Card</h2>
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+        <div id="footer">
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/local")
+    <script type="text/javascript">
+        $(function () {
+            $(".datepick").datepicker();
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

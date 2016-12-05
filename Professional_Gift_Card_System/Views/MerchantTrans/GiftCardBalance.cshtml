@@ -1,0 +1,66 @@
+﻿@using Professional_Gift_Card_System.Models
+@model GiftInquiryModel
+@using Resources
+
+
+@{
+    ViewBag.Title = DisplayItems.BalanceInquiry;
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+<p></p>
+    <h2>@DisplayItems.BalanceInquiry</h2>
+    <p>
+        @DisplayItems.SwipeAndFill
+    </p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, DisplayItems.BalanceInquiry + " " + DisplayItems.WasUnsuccessful)
+        @Html.HiddenFor(m => m.LocalTime)
+            @Html.HiddenFor(m => m.CardSwipe)
+            Html.RenderPartial("_MerchantIDPartial");
+        <div>
+
+
+                
+            <table>
+                 <tr>
+                <td>
+                <div class="editor-label">
+                    @DisplayItems.InquiryCardSwipe
+                </div>
+                </td>
+                <td>
+                     <div class="editor-field">
+                        <input type="text" id="RawCard1" name="RawCard1" onkeydown="return KillReturn(event)"  onkeypress="return KillReturn(event)" 
+                               onkeyup="return KillReturn(event)" onblur="SaveCard(this.value); SaveTime();" />
+                        @Html.ValidationMessageFor(model => model.CardSwipe)
+                    </div>
+                 </td>
+                </tr>
+            </table>
+
+
+
+                  
+                <p>
+                    <input type="submit" value="@DisplayItems.DoInquiry" />
+                </p>
+        </div>
+     } 
+
+    <div>
+        @Html.ActionLink(DisplayItems.BackToList, (string)TempData["ReturnAddress"])
+    </div>
+
+<script type="text/javascript">
+    FocusPoint = 'RawCard1';
+
+</script>
+
+
+
+

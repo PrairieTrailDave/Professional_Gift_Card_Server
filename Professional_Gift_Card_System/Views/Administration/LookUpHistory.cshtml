@@ -1,0 +1,79 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<WebHistory>
+
+
+@{
+    ViewBag.Title = "Lookup History";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <h2>LookUpHistory</h2>
+
+    <table>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                MerchantName
+            </th>
+            <th>                When
+            </th>
+            <th>
+                TransType
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Points
+            </th>
+            <th>
+                Reward
+            </th>
+            <th>
+                Text
+            </th>
+       </tr>
+
+    @{ foreach (var item in Model) { 
+    
+        <tr>
+            <td>
+                @item.ID
+            </td>
+            <td>
+                @item.MerchantName
+            </td>
+            <td>
+                @item.When
+            </td>
+            <td>
+                @item.TransType
+            </td>
+            <td>
+                @item.Amount
+            </td>
+            <td>
+                @item.PointsGranted
+            </td>
+            <td>
+                @item.Reward
+            </td>
+            <td>
+                @item.Text
+            </td>
+        </tr>
+    
+     } }
+
+    </table>
+
+    <p>
+        @Html.ActionLink("Back to selecting card for history", "CardHistory")
+    </p>
+
+
+
+

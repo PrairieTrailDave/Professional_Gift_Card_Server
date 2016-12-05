@@ -1,0 +1,98 @@
+﻿@using Professional_Gift_Card_System.Models
+@model MerchantShipModel
+
+@{
+    ViewBag.Title = "Ship Cards";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>Ship Cards</h2>
+
+@*This is not functioning*@
+
+    <fieldset>
+        <legend>Fields</legend>
+        <table>
+        <tr>
+        <td>
+        <div class="display-label">ID</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ID</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">MerchantID</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.MerchantID</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">MerchantName</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.MerchantName</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FirstCardNumber)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.FirstCardNumber)
+                @Html.ValidationMessageFor(model => model.FirstCardNumber)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LastCardNumber)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.LastCardNumber)
+                @Html.ValidationMessageFor(model => model.LastCardNumber)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NumberOfCards)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.NumberOfCards)
+                @Html.ValidationMessageFor(model => model.NumberOfCards)
+            </div>
+        </td>
+        </tr>
+           
+  
+        </table>
+
+        
+    </fieldset>
+    <p>
+        @Html.ActionLink("Ship Cards", "ShipCards", new {  id=Model.ID  }) |
+        @Html.ActionLink("Back to List", "SelectMerchantForEdit")
+    </p>
+
+
+

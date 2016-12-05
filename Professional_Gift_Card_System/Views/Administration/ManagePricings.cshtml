@@ -1,0 +1,81 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<EditPriceModel>
+
+@{
+    ViewBag.Title = "Manage Pricings";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>Manage Pricings</h2>
+    <p>The pricing system is designed to support a number of merchants. 
+    </p>
+    <p>The pricings table contains the different options of how to price things for all merchants.
+    Then, in the merchant definition/ edit mode, select which pricing to use for this merchant.
+    </p>
+    <table>
+        <tr>
+            <th></th>
+            <th>
+                ID
+            </th>
+            <th>
+                Pricing Name
+            </th>
+            <th>
+                Card Price
+            </th>
+            <th>
+                Transaction Price
+            </th>
+            <th>
+                Gift Monthly Fee
+            </th>
+            <th>
+                Loyalty Monthly Fee
+            </th>
+        </tr>
+
+    @{ foreach (var item in Model) { 
+    
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "EditPricing", new { id=item.DatabaseID  }) |
+                @Html.ActionLink("Details", "PricingDetails", new { id = item.DatabaseID }) |
+                @Html.ActionLink("Delete", "DeletePricing", new { id = item.DatabaseID })
+            </td>
+            <td>
+                @item.DatabaseID
+            </td>
+            <td>
+                @item.PricingName
+            </td>
+            <td>
+                @item.CardPrice
+            </td>
+            <td>
+                @item.TransactionPrice
+            </td>
+            <td>
+                @item.GiftMonthlyFee
+            </td>
+            <td>
+                @item.LoyaltyMonthlyFee
+            </td>
+        </tr>
+    
+     } }
+
+    </table>
+
+    <p>
+        @Html.ActionLink("Create New", "AddPricing")
+        <br />
+
+        @Html.ActionLink("Back to Main Page", "Index")
+    </p>
+
+
+
+

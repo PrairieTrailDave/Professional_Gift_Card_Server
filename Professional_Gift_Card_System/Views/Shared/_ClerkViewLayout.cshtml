@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Local.css")" rel="stylesheet" type="text/css" />
+        <script type="text/javascript">
+            var FocusPoint;
+            function TestFocus() { if (FocusPoint) AutoFocus(FocusPoint); }
+            function AutoFocus(x) { document.getElementById(x).focus(); }
+            function EatReturn() { return false; }
+            function VerifyValues() {
+                if (document.getElementById('CardSwipe').value == null)
+                    document.getElementById('CardSwipe').value = document.getElementById('RawCard1').value;
+                return true;
+            }
+            function KillReturn(e) {
+                e = e || window.event; var key = e.keyCode; if (key == 13) {
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    }
+                    return false;
+                } return true;
+            }
+            function SaveCard(CardSwipe) {
+                document.getElementById('CardSwipe').value = CardSwipe
+                return false;
+            }
+            function StoreValue(NewValue) {
+                document.getElementById('Amount').value = FormatAmount(NewValue)
+                return false;
+            }
+
+            function FormatAmount(Amount) {
+                var i;
+                var result;
+                var DecimalFound;
+                var DecimalCount;
+
+                result = "";
+                DecimalFound = false;
+                DecimalCount = 0;
+                for (i = 0; i < Amount.length; i++) {
+                    if (Amount.charAt(i) != '$')
+                        result = result + Amount.charAt(i);
+                    if (DecimalFound) DecimalCount++;
+                    if (Amount.charAt(i) == '.')
+                        DecimalFound = true;
+                }
+                if (!DecimalFound) result = result + ".00";
+                else {
+                    while (DecimalCount < 2) { result = result + "0"; DecimalCount++; }
+                }
+                return (result);
+            }
+    </script>
+
+</head>
+<body onload="TestFocus()">
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <h2>Merchant Transactions for Gift and Loyalty Card</h2>
+            </div>
+            <div id="menucontainer">
+                 @if(Request.IsAuthenticated) {
+                    <text>Welcome <strong>@User.Identity.Name</strong>!
+                    [ @Html.ActionLink("Log Off", "LogOff", "Account") ]</text>
+                }
+               <ul id="menu">
+               @if (User.IsInRole("Merchant"))
+               {
+                    <li>@Html.ActionLink("Home", "Index", "MerchantTrans")</li>
+               }
+               else
+               {
+                    <li>@Html.ActionLink("Home", "ClerkIndex", "MerchantTrans")</li>
+               }
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            @RenderBody()
+        </div>
+        <div id="footer">
+        </div>
+    </div>
+</body>
+</html>
+

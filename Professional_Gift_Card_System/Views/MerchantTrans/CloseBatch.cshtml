@@ -1,0 +1,36 @@
+﻿using Professional_Gift_Card_System.Models
+@model CloseModel
+
+@{
+    ViewBag.Title = "Close Batch";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+
+
+    <h2>Close Batch</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Close Batch was unsuccessful. Please correct the errors and try again.")
+
+        @Html.HiddenFor(m => m.LocalTime)
+
+        <p>
+        <input name="ID" type="hidden" value="0" />
+            <input style="border-style: solid; border-width : 1px 1px 1px 1px; border-top: 1px solid #CCCCCC; border-right: 1px solid #333333; border-bottom: 1px solid #333333;" 
+            type="submit" value="Close Batch" onclick="SaveTime();" />
+        </p>
+
+    } 
+    <p>
+
+    </p>
+   <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+
+

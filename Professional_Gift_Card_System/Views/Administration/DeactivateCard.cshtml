@@ -1,0 +1,73 @@
+﻿@using Professional_Gift_Card_System.Models
+@model Card
+
+@{
+    ViewBag.Title = "Deactivate Card";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>DeactivateCard</h2>
+
+    <h3>Are you sure you want to deactivate this?</h3>
+    <fieldset>
+        <legend>Fields</legend>
+        
+        <div class="display-label">ID</div>
+        <div class="display-field">@Model.ID</div>
+        
+        <div class="display-label">CardNumber</div>
+        <div class="display-field">@Model.CardNumber</div>
+        
+        <div class="display-label">CardNumLast4</div>
+        <div class="display-field">@Model.CardNumLast4</div>
+        
+        <div class="display-label">ChainID</div>
+        <div class="display-field">@Model.ChainID</div>
+        
+        <div class="display-label">MerchantID</div>
+        <div class="display-field">@Model.MerchantID</div>
+        
+        <div class="display-label">GroupCode</div>
+        <div class="display-field">@Model.GroupCode</div>
+        
+        <div class="display-label">CardholderName</div>
+        <div class="display-field">@Model.CardholderName</div>
+        
+        <div class="display-label">CardHolder</div>
+        <div class="display-field">@Model.CardHolder</div>
+        
+        <div class="display-label">Shipped</div>
+        <div class="display-field">@Model.Shipped</div>
+        
+        <div class="display-label">Activated</div>
+        <div class="display-field">@Model.Activated</div>
+        
+        <div class="display-label">GiftBalance</div>
+        <div class="display-field">@Model.GiftBalance</div>
+        
+        <div class="display-label">LoyaltyBalance</div>
+        <div class="display-field">@Model.LoyaltyBalance</div>
+        
+        <div class="display-label">LoyaltyVisits</div>
+        <div class="display-field">@Model.LoyaltyVisits</div>
+        
+        <div class="display-label">DateShipped</div>
+        <div class="display-field">@Model.DateShipped</div>
+        
+        <div class="display-label">DateActivated</div>
+        <div class="display-field">@Model.DateActivated</div>
+        
+    </fieldset>
+    @using (Html.BeginForm()) { 
+    @Html.AntiForgeryToken()
+        <p>
+		    <input type="submit" value="Delete" /> |
+		    @Html.ActionLink("Back to Main Page", "Index")
+        </p>
+     } 
+
+
+
+

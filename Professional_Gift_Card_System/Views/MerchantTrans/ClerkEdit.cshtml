@@ -1,0 +1,60 @@
+﻿@using Professional_Gift_Card_System.Models
+@model EditClerkModel
+
+
+@{
+    ViewBag.Title = "EditClerk";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+
+    <h2>Edit Clerk</h2>
+
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+            @ViewData["Message"]
+
+        <fieldset>
+            <legend>Fields</legend>
+            
+                @Html.HiddenFor(model => model.DatabaseID)
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ClerkID)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ClerkID)
+                @Html.ValidationMessageFor(model => model.ClerkID)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ClerkName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ClerkName)
+                @Html.ValidationMessageFor(model => model.ClerkName)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+                <br />
+                <input type="submit" name="SuggestClerkPassword" value="Suggest new Password" />
+
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Password)
+                @ViewData["ExtraInstructions"] 
+            </div>
+            
+            <p>
+                <input type="submit" name="UpdateClerk" value="Save" />
+            </p>
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to List", "Back")
+    </div>
+

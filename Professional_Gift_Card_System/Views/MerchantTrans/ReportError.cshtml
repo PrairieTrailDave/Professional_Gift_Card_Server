@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "ReportError";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+<h2>Report Error</h2>
+
+    @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,121 @@
+﻿@using Professional_Gift_Card_System.Models
+@model EditPriceModel
+
+@{
+    ViewBag.Title = "Edit Pricing";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>EditPricing</h2>
+
+    @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+        
+        <fieldset>
+            <legend>Fields</legend>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DatabaseID)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DatabaseID)
+                @Html.ValidationMessageFor(model => model.DatabaseID)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PricingName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.PricingName)
+                @Html.ValidationMessageFor(model => model.PricingName)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CardPrice)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CardPrice)
+                @Html.ValidationMessageFor(model => model.CardPrice)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.TransactionPrice)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.TransactionPrice)
+                @Html.ValidationMessageFor(model => model.TransactionPrice)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SupportTransactionPrice)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.SupportTransactionPrice)
+                @Html.ValidationMessageFor(model => model.SupportTransactionPrice)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DialupTransactionPrice)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DialupTransactionPrice)
+                @Html.ValidationMessageFor(model => model.DialupTransactionPrice)
+            </div>
+                        
+            <div class="editor-label">
+                @Html.LabelFor(model => model.GiftMonthlyFee)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.GiftMonthlyFee)
+                @Html.ValidationMessageFor(model => model.GiftMonthlyFee)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LoyaltyMonthlyFee)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.LoyaltyMonthlyFee)
+                @Html.ValidationMessageFor(model => model.LoyaltyMonthlyFee)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CardholderMonthlyFee)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CardholderMonthlyFee)
+                @Html.ValidationMessageFor(model => model.CardholderMonthlyFee)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CardHolderPercentageCharge)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CardHolderPercentageCharge)
+                @Html.ValidationMessageFor(model => model.CardHolderPercentageCharge)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AfterXMonths)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.AfterXMonths)
+                @Html.ValidationMessageFor(model => model.AfterXMonths)
+            </div>
+            
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to Main Page", "Index")
+    </div>
+
+
+
+

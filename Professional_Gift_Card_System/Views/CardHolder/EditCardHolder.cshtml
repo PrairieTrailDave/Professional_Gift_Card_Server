@@ -1,0 +1,182 @@
+﻿@using Professional_Gift_Card_System.Models
+@model EditCardHolderModel
+
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <h2>Edit CardHolder</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Please correct the errors and try again.")
+        <br />
+        @ViewData["Message"]
+        
+        <fieldset>
+            <legend>Fields</legend>
+        <table>
+        <tr>
+        <td>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.FirstName)
+                </div>
+        </td>
+        <td>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.FirstName)
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.LastName)
+                </div>
+        </td>
+        <td>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.LastName)
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </div>
+         </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CellPhoneNumber)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CellPhoneNumber)
+                @Html.ValidationMessageFor(model => model.CellPhoneNumber)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+               
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Email)
+                </div>
+        </td>
+        <td>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Address1)
+                @Html.ValidationMessageFor(model => model.Address1)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Address2)
+                @Html.ValidationMessageFor(model => model.Address2)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.City)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.City)
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.State)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.State)
+                @Html.ValidationMessageFor(model => model.State)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Country)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Country)
+                @Html.ValidationMessageFor(model => model.Country)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PostalCode)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.PostalCode)
+                @Html.ValidationMessageFor(model => model.PostalCode)
+            </div>
+        </td>
+        </tr>
+
+        </table>            
+                
+            
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to Main Page", "Index")
+    </div>
+
+
+
+

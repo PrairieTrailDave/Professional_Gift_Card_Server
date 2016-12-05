@@ -1,0 +1,27 @@
+﻿@model dynamic
+
+
+@{
+    ViewBag.Title = "Detail Report";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+
+
+    <h2>Detail Report</h2>
+    @using (Html.BeginForm()) { 
+        @Html.ValidationSummary(true, "Detail report was unsuccessful. Please correct the errors and try again.")
+                <p>
+                </p>
+     } 
+    <p>
+
+    </p>
+   <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+
+

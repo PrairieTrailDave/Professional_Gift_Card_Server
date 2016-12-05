@@ -1,0 +1,161 @@
+﻿@using Professional_Gift_Card_System.Models
+@model EditReceiptHeaderModel
+
+@{
+    ViewBag.Title = "Edit Receipt Header";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+    <h2>Edit Receipt Header / Footer</h2>
+
+    @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Please correct the errors and try again")
+        
+        <fieldset>
+            <legend>Fields</legend>
+            
+        <table>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReceiptHeaderLine1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ReceiptHeaderLine1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ReceiptHeaderLine1)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReceiptHeaderLine2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ReceiptHeaderLine2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ReceiptHeaderLine2)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReceiptHeaderLine3)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ReceiptHeaderLine3)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ReceiptHeaderLine3)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReceiptHeaderLine4)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ReceiptHeaderLine4)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ReceiptHeaderLine4)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReceiptHeaderLine5)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ReceiptHeaderLine5)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ReceiptHeaderLine5)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReceiptFooterLine1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ReceiptFooterLine1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ReceiptFooterLine1)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReceiptFooterLine2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ReceiptFooterLine2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ReceiptFooterLine2)
+            </div>
+        </td>
+        </tr>
+         </table>
+           
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "MerchantTrans")
+    </div>
+
+
+
+

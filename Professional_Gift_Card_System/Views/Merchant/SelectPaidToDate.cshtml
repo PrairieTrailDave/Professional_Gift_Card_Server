@@ -1,0 +1,98 @@
+﻿@using Professional_Gift_Card_System.Models
+@model MerchantModel
+
+@{
+    ViewBag.Title = "UpdatePaidToDate";
+    Layout = "~/Views/Shared/_MerchantSupportLayout.cshtml";
+}
+
+<h2>Update Paid To Date</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+    <fieldset>
+        <legend>Merchant Information</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MerchantID)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.MerchantID)
+            @Html.ValidationMessageFor(model => model.MerchantID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MerchantName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.MerchantName)
+            @Html.ValidationMessageFor(model => model.MerchantName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContactPerson)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ContactPerson)
+            @Html.ValidationMessageFor(model => model.ContactPerson)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContactPhone)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ContactPhone)
+            @Html.ValidationMessageFor(model => model.ContactPhone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GiftActive)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.GiftActive)
+            @Html.ValidationMessageFor(model => model.GiftActive)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LoyaltyActive)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.LoyaltyActive)
+            @Html.ValidationMessageFor(model => model.LoyaltyActive)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastBillingDate) (Read only)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.LastBillingDate)
+            @Html.ValidationMessageFor(model => model.LastBillingDate)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PaidToDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PaidToDate)
+            @Html.ValidationMessageFor(model => model.PaidToDate)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "SelectMerchantForPayment")
+</div>

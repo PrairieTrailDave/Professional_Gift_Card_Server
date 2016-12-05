@@ -1,0 +1,82 @@
+﻿@using Professional_Gift_Card_System.Models
+@model MerchantHistoryModel
+
+@{
+    ViewBag.Title = "Show History";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>History</h2>
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+
+    <table>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                When
+            </th>
+            <th>
+                Card Number (last 4 digits)
+            </th>
+            <th>
+                Transaction Type
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Points
+            </th>
+        </tr>
+
+    @{ foreach (var item in Model.MHistory)
+       { 
+    
+        <tr>
+            <td>
+                @item.ID
+            </td>
+            <td>
+                @item.When
+            </td>
+            <td>
+                @item.CardNumber
+            </td>
+            <td>
+                @item.TransType
+            </td>
+            <td>
+                @item.Amount
+            </td>
+            <td>
+                @item.PointsGranted
+            </td>
+        </tr>
+    
+     } }
+
+    </table>
+
+    @if (Model.HasPreviousPage)
+       { 
+    @Html.ActionLink("<<<", "ShowHistory", new { page = (Model.PageIndex - 1) })
+     } 
+
+    @if (Model.HasNextPage)
+       { 
+    @Html.ActionLink(">>>", "ShowHistory", new { page = (Model.PageIndex + 1) })
+     } 
+
+
+
+    <p>
+        @Html.ActionLink("Back to List", "SelectMerchantForEdit")
+    </p>
+
+
+
+

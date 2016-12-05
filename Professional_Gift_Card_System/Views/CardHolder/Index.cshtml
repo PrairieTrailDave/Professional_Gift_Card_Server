@@ -1,0 +1,62 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<GiftCardBalance>
+@{
+    ViewBag.Title = "CardHolder Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <h2>Welcome to the Gift Card System, @ViewData["User"]</h2>
+    <h2>@ViewData["Message"]</h2>
+
+    <p>
+
+            @Html.ActionLink("Change my details", "EditCardHolder", "CardHolder")
+            <br />
+    </p>
+
+    <table>
+        <tr>
+            <th>
+            </th>
+            <th>
+            Card Number
+            </th>
+            <th>
+            Gift Balance
+            </th>
+            <th>
+            Point Balance
+            </th>
+        </tr>
+
+    @{ foreach (var item in Model)
+       { 
+    
+        <tr>
+            <td>
+                @Html.ActionLink("See Transaction History", "CardHolderHistory", new { CardID = item.CardID }) 
+                <br />
+                @Html.ActionLink("Unregister this card", "UnregisterCard", new { ID = item.ID })
+            </td>
+
+            <td>
+                            @item.CardNumber
+            </td>
+            <td>
+                            @item.GiftBalance
+            </td>
+            <td>
+                            @item.LoyaltyPointBalance
+            </td>
+        </tr>
+    
+       } }
+
+    </table>
+
+            @Html.ActionLink("Register another card", "RegisterNewCard", "CardHolder")
+
+
+
+

@@ -1,0 +1,55 @@
+﻿@using Professional_Gift_Card_System.Models
+@model UnregisterCardModel
+
+@{
+    ViewBag.Title = "Unregister a Card";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <h2>Unregister Card</h2>
+
+    <h3>Are you sure you want to unregister this?</h3>
+    <fieldset>
+        <legend>Fields</legend>
+    <table>
+        <tr>
+            <th>
+            Card Number
+            </th>
+            <th>
+            Balance
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                            @Model.CardNumber
+            </td>
+            <td>
+                            @Model.Balance
+            </td>
+        </tr>
+    </table>
+        
+    </fieldset>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.CardNumber)
+        @Html.HiddenFor(model => model.Balance)
+
+        <p>
+		    <input type="submit" value="Unregister it" /> |
+		    @Html.ActionLink("Back to List", "Index")
+        <br />
+        @ViewData["Message"]
+        </p>
+     } 
+
+
+
+

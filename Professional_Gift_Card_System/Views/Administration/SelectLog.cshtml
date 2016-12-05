@@ -1,0 +1,33 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<LogHistoryModel>
+
+@{
+    ViewBag.Title = "SelectLog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Select Log File To Show</h2>
+
+<table>
+    <tr>
+        <th>Sign In Logs</th>
+    </tr>
+
+    @foreach (var File in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Display " + File.FileName, "ShowLog", new { id = File.id }) 
+                |
+                @Html.ActionLink(" Delete", "DeleteLog", new { id = File.id })
+
+
+            </td>
+        </tr>
+    }
+</table>
+
+
+<div>
+    @Html.ActionLink("Back to Main Page", "Index")
+</div>

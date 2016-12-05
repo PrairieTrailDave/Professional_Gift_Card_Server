@@ -1,0 +1,45 @@
+﻿@using Professional_Gift_Card_System.Models
+@model RegisterNewCardModel
+
+@{
+    ViewBag.Title = "Register Card";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <h2>Register New Card</h2>
+    <p> Please enter the card number to register</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+
+        <fieldset>
+            <legend>Enter the card to register</legend>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CardNumber)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.CardNumber)
+                @Html.ValidationMessageFor(model => model.CardNumber)
+            </div>
+            
+            <p>
+                <input type="submit" value="Register" />
+                <br />
+        @ViewData["Message"]
+
+            </p>
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+
+

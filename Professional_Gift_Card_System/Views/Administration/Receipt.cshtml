@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Receipt</title>
+    @{
+        // prevent caching (asp classic jscript)
+        Response.CacheControl = "no-cache";
+        Response.AddHeader("Pragma", "no-cache");
+        Response.Expires = -1;
+    }
+     <script type="text/javascript">
+         function printDiv(divName) {
+             var printContents = document.getElementById(divName).innerHTML; var originalContents = document.body.innerHTML; document.body.innerHTML = printContents;
+             document.body.style.margin = "0"; document.body.style.width = "100%";
+             document.body.style.paddingLeft = 0; document.body.style.marginLeft = 0;
+             document.title = "";
+             window.print(); document.body.innerHTML = originalContents;
+         }
+
+         function printIt(printThis) { var win = window.open(); self.focus(); win.document.open(); win.document.write('<' + 'html' + '><' + 'body' + '>'); win.document.write(printThis); win.document.write('<' + '/body' + '><' + '/html' + '>'); win.document.close(); win.print(); win.close(); } 
+     </script>
+     <style type="text/css"  media="print">
+         #printableArea
+         {
+            width: 100%; margin: 0; float: none; padding: 0;
+         }
+     </style>
+</head>
+<body bgcolor="white">
+
+
+<div id="printableArea"> 
+<pre>
+@{
+    List<String> rLines;
+    Professional_Gift_Card_System.Models.Receipt Receipt;
+    TempData.Keep("Receipt"); // allow refresh to show the same data
+    Receipt = (Professional_Gift_Card_System.Models.Receipt) TempData["Receipt"];
+    if (Receipt != null)
+    {
+        rLines = Receipt.Lines;
+        foreach (String rline in rLines)
+        {
+        @rline
+        <br />
+        }
+    }
+	else
+	{
+<br/>
+<text>Receipt is null </text>   		
+	}
+    }
+</pre>
+</div>
+    <div>
+    
+    <input type="button" onclick="printDiv('printableArea')" value="Print This Page" />
+
+    </div>
+    <div>
+        @Html.ActionLink("Back to Main Page", "Back")
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@using Professional_Gift_Card_System.Models
+@model ReceiveAndShipCardModel
+
+@{
+    ViewBag.Title = "AddBatchCards";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>Add Batch Cards</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+
+        <fieldset>
+            <legend>Fields</legend>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MerchantName)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.MerchantName, new SelectList(Model.MerchantList, "Value", "Text"))
+                @Html.ValidationMessageFor(model => model.MerchantName)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BatchCards)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.BatchCards)
+                @Html.ValidationMessageFor(model => model.BatchCards)
+            </div>
+
+            <p>
+                <input type="submit" value="Add and Ship Batch" />
+            </p>
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to List", "Back")
+    </div>
+
+
+
+

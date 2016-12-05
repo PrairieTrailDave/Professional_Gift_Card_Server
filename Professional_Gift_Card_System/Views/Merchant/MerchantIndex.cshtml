@@ -1,0 +1,47 @@
+﻿@using Professional_Gift_Card_System.Models
+@model MerchantSelectedModel
+
+
+@{
+    ViewBag.Title = "MerchantIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Merchant Actions Index</h2>
+
+<p>
+    Managing Merchant: 
+    <br />
+    @Model.MerchantName
+    <br />
+    @Model.MerchantAddress1
+    <br />
+    @Model.MerchantAddress2
+    <br />
+    @Model.MerchantCityState
+    <br />
+    @Model.MerchantPhoneNumber
+    <br />
+    Paid to: @Model.PaidUpTo
+</p>
+@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) 
+<br />
+@Html.ActionLink("Set Pricing", "SetPricing", new { id = Model.ID }) 
+<br />
+@Html.ActionLink("Select", "SelectPaidToDate", new { id = Model.ID })
+<br />
+@Html.ActionLink("Reset Password", "ResetPassword", new { id = Model.ID }) 
+<br />
+@Html.ActionLink("Details", "Details", new { id = Model.ID })  
+<br />
+@Html.ActionLink("History", "History", new { id = Model.ID })
+<br />
+@Html.ActionLink("Invoice", "Invoice", new { id = Model.ID })
+<br />
+@Html.ActionLink("Mark Merchant Paid To", "SelectPaidToDate", new { id = Model.ID })
+<br />
+
+@Html.ActionLink("Run As Merchant", "RunAsMerchant", new { id = Model.ID }, new { target = "_blank" })
+
+<br />
+@Html.ActionLink("Back to List", "SelectMerchantForEdit")

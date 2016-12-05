@@ -1,0 +1,68 @@
+﻿@using Professional_Gift_Card_System.Models
+@model ReceiveCards
+
+
+@{
+    ViewBag.Title = "Receive Cards";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>Receive Cards into Inventory</h2>
+
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+
+     } 
+
+
+  <form method="post" action="ReceiveCards.aspx" onsubmit="return EatReturn()">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FirstCardNumber)
+            </div>
+            <div class="editor-field">
+            <input type="text" name="RawCard1" onchange="document.getElementById('FirstCardNumber').value=this.value" />
+                @Html.ValidationMessageFor(model => model.FirstCardNumber)
+            </div>
+   </form>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.FirstCardNumber)
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LastCardNumber)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.LastCardNumber, new { onblur = "TestCount(this.value,document.getElementById('FirstCardNumber').value);" })
+                @Html.ValidationMessageFor(model => model.LastCardNumber)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NumberOfCards)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.NumberOfCards)
+                @Html.ValidationMessageFor(model => model.NumberOfCards)
+            </div>
+            
+            
+ 
+            
+            <p>
+                <input type="submit" value="Add to Inventory" />
+            </p>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to Main Page", "Index")
+    </div>
+
+<script type="text/javascript">
+    function TestCount(a, b) { var dif = a - b; if (dif < 0) alert("the last card has to be after the first card"); if (dif > 100) alert("You are attempting to add " + dif + " cards, is that correct"); return false; }
+</script>
+
+

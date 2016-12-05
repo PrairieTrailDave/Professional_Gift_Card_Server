@@ -1,0 +1,308 @@
+﻿@using Professional_Gift_Card_System.Models
+@model MerchantModel
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>Details</h2>
+
+    <fieldset>
+        <legend>Fields</legend>
+        <table>
+        <tr>
+        <td>
+        <div class="display-label">ID</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ID</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">MerchantID</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.MerchantID</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">MerchantName</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.MerchantName</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">Address1</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.Address1</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">Address2</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.Address2</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">City</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.City</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">State</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.State</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">Country</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.Country</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">PostalCode</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.PostalCode</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">Phone</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.Phone</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">EMail</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.EMail</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ContactPerson</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ContactPerson</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ContactPhone</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ContactPhone</div>
+        </td>
+        </tr>
+
+
+        <tr>
+        <td>
+        <div class="display-label">TimeZone</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.TimeZone</div>
+        </td>
+        </tr>
+
+            <tr>
+                <td>
+                    <div class="display-label">Close Time</div>
+                </td>
+                <td>
+                    <div class="display-field">@Model.CloseTime</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="display-label">Restaurant/Retail</div>
+                </td>
+                <td>
+                    <div class="display-field">@Model.RestaurantRetail</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">AskForClerkServer</div>
+                </td>
+                <td>
+                    <div class="display-field">@Model.AskForClerkServer</div>
+                </td>
+            </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">Gift Processing Active</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.GiftActive</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">LastBillingDate</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.LastBillingDate</div>
+        </td>
+        </tr>
+
+
+        <tr>
+        <td>
+        <div class="display-label">LastShiftClose</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.LastShiftClose</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ShippingAddressLine1</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ShippingAddressLine1</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ShippingAddressLine2</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ShippingAddressLine2</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ShippingAddressLine3</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ShippingAddressLine3</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ShippingAddressLine4</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ShippingAddressLine4</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ReceiptHeaderLine1</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ReceiptHeaderLine1</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ReceiptHeaderLine2</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ReceiptHeaderLine2</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ReceiptHeaderLine3</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ReceiptHeaderLine3</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ReceiptHeaderLine4</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ReceiptHeaderLine4</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ReceiptHeaderLine5</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ReceiptHeaderLine5</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ReceiptFooterLine1</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ReceiptFooterLine1</div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+        <div class="display-label">ReceiptFooterLine2</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.ReceiptFooterLine2</div>
+        </td>
+        </tr>
+        </table>
+
+        
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new {  id=Model.ID  }) |
+        @Html.ActionLink("Back to List", "SelectMerchantForEdit")
+    </p>
+
+
+
+

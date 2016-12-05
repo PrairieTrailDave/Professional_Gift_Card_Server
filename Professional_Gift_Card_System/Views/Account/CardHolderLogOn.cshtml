@@ -1,0 +1,48 @@
+﻿@using Professional_Gift_Card_System.Models
+@model CardHolderLogOnModel
+
+@{
+    ViewBag.Title = "Customer LogOn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <h2>Card Holder Log On</h2>
+    <p>
+        Please enter your email address and password. 
+        <span style="color: Blue; font-size: 18pt">
+        @Html.ActionLink("Register", "Register")  
+        </span>
+        if you don't have an account.
+    </p>
+
+    @using (Html.BeginForm()) { 
+        @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+        @Html.AntiForgeryToken()
+        <div>
+            <fieldset>
+                <legend>Account Information</legend>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.UserEmailAddress) 
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.UserEmailAddress)
+                    @Html.ValidationMessageFor(m => m.UserEmailAddress)
+                </div>
+                
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Password)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(m => m.Password) 
+                    @Html.ValidationMessageFor(m => m.Password) 
+                </div>
+                
+                
+                <p>
+                    <input type="submit" value="Log On" />
+                </p>
+            </fieldset>
+        </div>
+    } 

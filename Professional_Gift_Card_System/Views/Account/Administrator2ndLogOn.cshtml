@@ -1,0 +1,36 @@
+﻿@using Professional_Gift_Card_System.Models
+@model AdministratorLogOnModel
+
+@{
+    ViewBag.Title = "AgentLogOn";
+    Layout = "~/Views/Shared/_LogInLayout.cshtml";
+}
+
+<h2>Second Step</h2>
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Enter Secret Password</legend>
+
+            @Html.HiddenFor(model => model.UserName)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <p>
+            <input type="submit" value="Log On" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Main Page", "Index", "Home")
+</div>

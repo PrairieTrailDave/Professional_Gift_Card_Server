@@ -1,0 +1,102 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<MerchantModel>
+
+@{
+    ViewBag.Title = "Merchant Management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <h2>Merchant Management</h2>
+
+
+<p>
+    @Html.ActionLink("Create New Merchant", "AddMerchant")
+</p>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>
+                ID
+            </th>
+            <th>
+                ChainID
+            </th>
+            <th>
+                MerchantID
+            </th>
+            <th>
+                MerchantName
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                EMail
+            </th>
+            <th>
+                ContactPerson
+            </th>
+            <th>
+                ContactPhone
+            </th>
+        </tr>
+
+    @{ foreach (var item in Model) { 
+    
+        <tr>
+            <td>
+                @Html.ActionLink("Select", "MerchantIndex", new { id = item.ID }) 
+            </td>
+            <td>
+                @item.ID
+            </td>
+            <td>
+                @item.ChainID
+            </td>
+            <td>
+                @item.MerchantID
+            </td>
+            <td>
+                @item.MerchantName
+            </td>
+            <td>
+                @item.City
+            </td>
+            <td>
+                @item.State
+            </td>
+            <td>
+                @item.Phone
+            </td>
+            <td>
+                @item.EMail
+            </td>
+            <td>
+                @item.ContactPerson
+            </td>
+            <td>
+                @item.ContactPhone
+            </td>
+        </tr>
+    
+     } }
+
+    </table>
+
+
+<div>
+    @Html.ActionLink("Back to Main Menu", "Back")
+</div>
+
+
+
+
+

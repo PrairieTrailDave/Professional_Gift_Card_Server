@@ -1,0 +1,180 @@
+﻿@using Professional_Gift_Card_System.Models
+@model MerchantInvoicingModel
+
+@{
+    ViewBag.Title = "Invoice";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <h2>Invoice</h2>
+<fieldset>
+    <legend>Merchant Invoicing Information</legend>
+    <table>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.MerchantName)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.MerchantName)
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.MerchantBillingCycle)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.MerchantBillingCycle)
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.LastBillingDate)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.LastBillingDate)
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.PaidUpToDate)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.PaidUpToDate)
+                </div>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.GiftActive)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.GiftActive)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.MerchantGiftTransactionCount)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.MerchantGiftTransactionCount)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.MerchantGiftMonthlyFee)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.MerchantGiftMonthlyFee)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.LoyaltyActive)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.LoyaltyActive)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.LoyaltyLevel)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.LoyaltyLevel)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.MerchantLoyaltyTransactionCount)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.MerchantLoyaltyTransactionCount)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.MerchantLoyaltyMonthlyFee)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.MerchantLoyaltyMonthlyFee)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.InvoiceAmount)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(model => model.InvoiceAmount)
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+
+    @Html.HiddenFor(model => model.MerchantID)
+
+    <p>
+        <input type="submit" value="Invoice" />
+        <br />
+        @Html.ActionLink("Back to List", "InvoiceMerchants")
+    </p>
+
+}

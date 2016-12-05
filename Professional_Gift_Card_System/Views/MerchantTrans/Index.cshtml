@@ -1,0 +1,77 @@
+﻿
+
+@{
+    ViewBag.Title = Session["Who"] + "Transactions";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+
+    <h2>@ViewData["Message"]</h2>
+
+        @if (ViewData["AllowGift"] != null)
+        { 
+    <h2>Gift Card Transactions</h2>
+    <p>
+        @Html.ActionLink("Sale", "GiftCardSale", "MerchantTrans") 
+        <br />
+        @Html.ActionLink("Activate", "GiftCardActivate", "MerchantTrans") 
+        <br />
+        @Html.ActionLink("Top Up", "GiftCardTopUp", "MerchantTrans") 
+        <br />
+        @Html.ActionLink("Balance Inquiry", "GiftCardBalance", "MerchantTrans") 
+        <br />
+        @Html.ActionLink("Return", "GiftCardReturn", "MerchantTrans") 
+
+@if (ViewData["IsRestaurant"] != null)
+{
+        <br />
+        <br />
+        @Html.ActionLink("Enter Tips", "GiftShowTips", "MerchantTrans") 
+}
+        </p>
+        } 
+
+@if (Session["Who"] == "Merchant")
+{
+        <p>
+        <br />
+        <br />
+        <br />
+            @Html.ActionLink(
+             linkText: "Daily Sales Report",
+             actionName: "DailySales",
+             controllerName: "MerchantTrans",
+             routeValues: new { LocalTime = "MyTime" },
+             htmlAttributes: new { onclick = "this.href=this.href.replace('MyTime', GetDateNow());" }
+        )
+        <br />
+        @Html.ActionLink("Prior Daily Sales Reports", "PriorSummaries", "MerchantTrans")
+        <br />
+        @Html.ActionLink(
+             linkText: "Detail Report",
+             actionName: "DetailReport",
+             controllerName: "MerchantTrans",
+             routeValues: new { LocalTime = "MyTime" },
+             htmlAttributes: new {onclick="this.href=this.href.replace('MyTime', GetDateNow());"}
+        )  
+        <br />
+        @Html.ActionLink("Outstanding Balance Report", "OutstandingBalanceReport", "MerchantTrans") 
+        <br />
+
+
+        Management Functions
+        <br />
+        @Html.ActionLink("Close Batch", "CloseBatch", "MerchantTrans") 
+        <br />
+
+        <br />
+        <br />
+        @Html.ActionLink("Manage Clerks", "ClerkManagement", "MerchantTrans") 
+        <br />
+        @Html.ActionLink("Edit Merchant Information", "EditMerchData", "MerchantTrans") 
+        <br />
+        @Html.ActionLink("Edit Receipt Header / Footer", "EditReceiptHeader", "MerchantTrans") 
+        <br />    </p>
+
+}

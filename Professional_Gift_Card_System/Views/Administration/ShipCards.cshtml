@@ -1,0 +1,69 @@
+﻿@using Professional_Gift_Card_System.Models
+@model ShipCards
+
+
+@{
+    ViewBag.Title = "Ship Cards";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <h2>ShipCards</h2>
+
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+     } 
+
+
+  <form method="post" action="ShipCards.aspx" onsubmit="return EatReturn()">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FirstCardNumber)
+            </div>
+            <div class="editor-field">
+            <input type="text" name="RawCard1" onchange="document.getElementById('FirstCardNumber').value=this.value" />
+                @Html.ValidationMessageFor(model => model.FirstCardNumber)
+            </div>
+   </form>
+
+    @using (Html.BeginForm()) {
+     @Html.AntiForgeryToken()
+           
+                @Html.HiddenFor(model => model.FirstCardNumber)
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MerchantName)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.MerchantName, new SelectList(Model.MerchantList, "Value", "Text"))
+                @Html.ValidationMessageFor(model => model.MerchantName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LastCardNumber)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.LastCardNumber)
+                @Html.ValidationMessageFor(model => model.LastCardNumber)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NumberOfCards)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.NumberOfCards)
+                @Html.ValidationMessageFor(model => model.NumberOfCards)
+            </div>
+            
+            <p>
+                <input type="submit" value="Ship to Merchant" />
+            </p>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to Main Page", "Index")
+    </div>
+
+
+
+

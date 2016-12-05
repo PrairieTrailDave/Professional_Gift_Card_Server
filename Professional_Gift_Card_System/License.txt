@@ -1,0 +1,46 @@
+﻿This license governs use of the accompanying software. If you use the software, you
+accept this license. If you do not accept the license, do not use the software.
+
+1. Definitions
+The terms "reproduce," "reproduction," "derivative works," and "distribution" have the
+same meaning here as under U.S. copyright law.
+A "contribution" is the original software, or any additions or changes to the software.
+
+2. Grant of Rights
+(A) Copyright Grant- Subject to the terms of this license, including the license conditions
+and limitations in section 3, you are granted a non-exclusive, worldwide, royalty-free 
+copyright license to reproduce its contribution, prepare derivative works of its contribution, 
+and use for internal use, but not offer for sale this software or any derivative works that you create.
+(B) Patent Grant- There are no patent grants with this license.
+
+3. Conditions and Limitations
+(A) No Trademark License- This license does not grant you rights to use Prairie Trail Software, Inc.'s 
+name, logo, or trademarks.
+(B) If you distribute any portion of the software, you must retain all copyright, patent, 
+trademark, and attribution notices that are present in the software.
+(D) You may not distribute any portion of the software in source code form. If 
+you distribute any portion of the software in compiled or object code form, you may only do 
+so under a license that complies with this license.
+(E) UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+     TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+
+     SPECIFICALLY, THIS LICENSE DOES NOT OFFER ANY PROTECTION AGAINST 
+	 ANY PATENT CLAIMS BY ANY THIRD PARTY.

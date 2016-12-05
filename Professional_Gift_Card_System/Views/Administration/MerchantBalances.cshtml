@@ -1,0 +1,69 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<MerchantBalancesModel>
+
+@{
+    ViewBag.Title = "Merchant Balances";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>Review Merchant Balances</h2>
+    <p>Balances since the last time each merchant was invoiced
+    <br />
+    </p>
+<table>
+    <tr>
+        <th>
+            Merchant Name
+        </th>
+        <th>
+            Merchant ID
+        </th>
+        <th>
+            Gift Tran Count
+        </th>
+        <th>
+            Loyalty Tran Count
+        </th>
+        <th>
+            Balance
+        </th>
+        <th>
+            Paid Up To
+        </th>
+    </tr>
+
+    @{ foreach (var item in Model)
+     {
+
+        <tr>
+            <td>
+                @item.MerchantName
+            </td>
+            <td>
+                @item.MerchantID
+            </td>
+            <td>
+                @item.GiftTransactionCount
+            </td>
+            <td>
+                @item.LoyaltyTransactionCount
+            </td>
+            <td>
+                @item.Balance
+            </td>
+            <td>
+                @item.PaidUpToDate
+            </td>
+        </tr>
+
+     } }
+
+</table>
+
+
+<div>
+    @Html.ActionLink("Back to Main Page", "Index")
+</div>
+

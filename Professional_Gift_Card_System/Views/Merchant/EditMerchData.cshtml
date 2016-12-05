@@ -1,0 +1,363 @@
+﻿@using Professional_Gift_Card_System.Models
+@model EditMerchDataModel
+
+@{
+    ViewBag.Title = "Edit Merchant Data";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+    <h2>Edit Merchant Data</h2>
+
+    @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+        
+        <fieldset>
+            <legend>Fields</legend>
+            
+        <table>
+        <tr>
+        <td>
+           <div class="editor-label">
+                @Html.LabelFor(model => model.MerchantName)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.MerchantName)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.MerchantName)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Address1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.Address1)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Address2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.Address2)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.City)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.City)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.State)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.State)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.State)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Country)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Country)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.Country)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PostalCode)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.PostalCode)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.PostalCode)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Phone)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Phone)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.EMail)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.EMail)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.EMail)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ContactPerson)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ContactPerson)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ContactPerson)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ContactPhone)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ContactPhone)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ContactPhone)
+            </div>
+        </td>
+        </tr>
+            
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.TimeZone)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @(Html.DropDownListFor(model => model.TimeZone, new SelectList(new[] { 
+                    "Eastern Standard Time", "Central Standard Time", "Mountain Standard Time", "Pacific Standard Time","Alaskan Standard Time","Hawaiian Standard Time" }, Model.TimeZone)))
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.TimeZone)
+            </div>
+        </td>
+        </tr>
+            
+            
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.AllowSplitTender)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.DropDownList("AllowSplitTender", new SelectList(new[] { "Yes", "No" }))
+
+                    </div>
+                </td>
+            </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AskForClerkServer)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.AskForClerkServer, new SelectList(new[] { "Yes", "No" },Model.AskForClerkServer))
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.AskForClerkServer)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ShippingAddressLine1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ShippingAddressLine1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ShippingAddressLine1)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ShippingAddressLine2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ShippingAddressLine2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ShippingAddressLine2)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ShippingAddressLine3)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ShippingAddressLine3)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ShippingAddressLine3)
+            </div>
+        </td>
+        </tr>
+            
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ShippingAddressLine4)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ShippingAddressLine4)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.ValidationMessageFor(model => model.ShippingAddressLine4)
+            </div>
+        </td>
+        </tr>
+        </table>
+            
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "MerchantTrans")
+    </div>
+
+
+
+@section ScriptContent {
+
+
+}
+
+

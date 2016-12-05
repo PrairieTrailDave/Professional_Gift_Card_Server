@@ -1,0 +1,97 @@
+﻿@using Professional_Gift_Card_System.Models
+@model GiftCardReturnModel
+@using Resources
+
+@{
+    ViewBag.Title = DisplayItems.GiftReturn;
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+<p></p>
+    <h2>@DisplayItems.ReturnValueToCard</h2>
+
+    <p>
+        @DisplayItems.SwipeAndFill
+    </p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, DisplayItems.Return + " " + DisplayItems.WasUnsuccessful)
+  
+        @Html.HiddenFor(m => m.LocalTime)
+        @Html.HiddenFor(m => m.CardSwipe)
+        Html.RenderPartial("_MerchantIDPartial");
+
+    
+            <div>
+
+                <table>
+ 
+                <tr>
+                <td>
+                    <div class="editor-label">
+                        @DisplayItems.ReturnCardSwipe
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        <input type="text" id="RawCard1" name="RawCard1" onkeydown="return KillReturn(event)"  onkeypress="return KillReturn(event)" 
+                               onkeyup="return KillReturn(event)" onblur="SaveCard(this.value); SaveTime();" />
+                        @Html.ValidationMessageFor(model => model.CardSwipe)
+                    </div>
+                </td>
+                </tr>
+
+
+                
+
+                
+                <tr>
+                <td>
+                <div class="editor-label">
+                    @DisplayItems.ReturnAmount
+                </div>
+                </td>
+                <td>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.AmountOfReturn, new { onblur = "this.value=FormatAmount(this.value);" })
+                    @Html.ValidationMessageFor(m => m.AmountOfReturn)
+                </div>
+                </td>
+                </tr>
+
+                <tr>
+                <td>
+                <div class="editor-label">
+                    @DisplayItems.ReturnReason
+                </div>
+                </td>
+                <td>
+                <div class="editor-field">
+                    @Html.TextBoxFor(m => m.ReturnReason)
+                    @Html.ValidationMessageFor(m => m.ReturnReason)
+                </div>
+                </td>
+                </tr>
+                </table>
+
+                 
+                <p>
+                    <input type="submit" value="@DisplayItems.Return" />
+                </p>
+        </div>
+    } 
+    <div>
+        @Html.ActionLink("Back to List", (string)TempData["ReturnAddress"])
+    </div>
+
+
+<script type="text/javascript">
+        FocusPoint = 'RawCard1';
+
+</script>
+
+
+
+
+

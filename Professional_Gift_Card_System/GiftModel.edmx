@@ -1,0 +1,1361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GiftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CardHolders">
+          <Key>
+            <PropertyRef Name="CardHolderGUID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardHolderGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EncryptedFirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EncryptedLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EncryptedCardHolderName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="EncryptedAddress1" Type="nvarchar" MaxLength="150" />
+          <Property Name="EncryptedAddress2" Type="nvarchar" MaxLength="150" />
+          <Property Name="EncryptedCity" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="State" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="EncryptedPostalCode" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="EncryptedPhone" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="EncryptedEmail" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="Card1" Type="uniqueidentifier" />
+          <Property Name="Card2" Type="uniqueidentifier" />
+          <Property Name="Card3" Type="uniqueidentifier" />
+          <Property Name="Card4" Type="uniqueidentifier" />
+          <Property Name="Card5" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="CardGUID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="CardNumLast4" Type="char" MaxLength="4" />
+          <Property Name="MerchantGUID" Type="uniqueidentifier" />
+          <Property Name="CardHolderGUID" Type="uniqueidentifier" />
+          <Property Name="Shipped" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Activated" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="GiftBalance" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="LoyaltyBalance" Type="int" Nullable="false" />
+          <Property Name="DateShipped" Type="datetime" />
+          <Property Name="DateActivated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Clerks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MerchantGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClerkID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Whom" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="GiftSystem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConstantKey" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ConstantValue" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WhenHappened" Type="datetime" Nullable="false" />
+          <Property Name="CardGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WhichMerchantGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MerchSeqNumber" Type="bigint" />
+          <Property Name="Clerk" Type="varchar" MaxLength="10" />
+          <Property Name="WebCellOrDialup" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TerminalID" Type="varchar" MaxLength="10" />
+          <Property Name="LocalTime" Type="datetime" />
+          <Property Name="TransType" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="ErrorCode" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TransactionText" Type="nvarchar" MaxLength="40" />
+          <Property Name="Amount" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="TipAmount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="TabAmount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="CardGUID2" Type="uniqueidentifier" />
+          <Property Name="InvoiceNumber" Type="nchar" MaxLength="15" />
+          <Property Name="SaleTransaction" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="MerchantGUID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MerchantGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MerchantID" Type="varchar" MaxLength="46" Nullable="false" />
+          <Property Name="MerchantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MerchantUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPhone" Type="varchar" MaxLength="25" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="TimeZone" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="LastSeqNumber" Type="bigint" Nullable="false" />
+          <Property Name="LastShiftClose" Type="datetime" />
+          <Property Name="GiftActive" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SplitTender" Type="char" MaxLength="1" />
+          <Property Name="Restaurant" Type="char" MaxLength="1" />
+          <Property Name="BillingCycle" Type="nchar" MaxLength="1" />
+          <Property Name="LastBillingDate" Type="datetime" Nullable="false" />
+          <Property Name="LastBillingNumber" Type="bigint" Nullable="false" />
+          <Property Name="BillingInfo" Type="uniqueidentifier" />
+          <Property Name="PaidUpTo" Type="date" />
+          <Property Name="EncryptedTaxID" Type="varchar" MaxLength="70" />
+          <Property Name="PricingCol" Type="uniqueidentifier" />
+          <Property Name="CurrencyCode" Type="nchar" MaxLength="5" />
+          <Property Name="AskForClerkServer" Type="int" Nullable="false" />
+          <Property Name="ShippingAddressLine1" Type="nvarchar" MaxLength="40" />
+          <Property Name="ShippingAddressLine2" Type="nvarchar" MaxLength="40" />
+          <Property Name="ShippingAddressLine3" Type="nvarchar" MaxLength="40" />
+          <Property Name="ShippingAddressLine4" Type="nvarchar" MaxLength="40" />
+          <Property Name="ReceiptHeaderLine1" Type="nvarchar" MaxLength="40" />
+          <Property Name="ReceiptHeaderLine2" Type="nvarchar" MaxLength="40" />
+          <Property Name="ReceiptHeaderLine3" Type="nvarchar" MaxLength="40" />
+          <Property Name="ReceiptHeaderLine4" Type="nvarchar" MaxLength="40" />
+          <Property Name="ReceiptHeaderLine5" Type="nvarchar" MaxLength="40" />
+          <Property Name="ReceiptFooterLine1" Type="nvarchar" MaxLength="40" />
+          <Property Name="ReceiptFooterLine2" Type="nvarchar" MaxLength="40" />
+          <Property Name="BackgroundImageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActivateAmount1" Type="int" />
+          <Property Name="ActivateAmount2" Type="int" />
+          <Property Name="ActivateAmount3" Type="int" />
+          <Property Name="ActivateAmount4" Type="int" />
+          <Property Name="ActivateAmount5" Type="int" />
+          <Property Name="ActivateAmount6" Type="int" />
+          <Property Name="ActivateAmount7" Type="int" />
+          <Property Name="ActivateAmount8" Type="int" />
+          <Property Name="ActivateAmount9" Type="int" />
+          <Property Name="ActivateAmount10" Type="int" />
+        </EntityType>
+        <EntityType Name="MerchantBilling">
+          <Key>
+            <PropertyRef Name="MerchantBillingGUID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MerchantBillingGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CardType" Type="char" MaxLength="2" />
+          <Property Name="EncryptedCardNumber" Type="varchar" MaxLength="100" />
+          <Property Name="ExpiryDate" Type="decimal" Precision="4" Scale="0" />
+          <Property Name="CVV" Type="char" MaxLength="32" />
+          <Property Name="EncryptedRouting" Type="varchar" MaxLength="100" />
+          <Property Name="EncryptedAccount" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Prices">
+          <Key>
+            <PropertyRef Name="PriceGUID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PriceGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PricingName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardPrice" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="TransactionPrice" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportTransactionPrice" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="GiftMonthlyFee" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="CardholderMonthlyFee" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="CardHolderPercentageCharge" Type="int" />
+          <Property Name="AfterXMonths" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Rolename" />
+            <PropertyRef Name="ApplicationName" />
+          </Key>
+          <Property Name="Rolename" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="255" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="LastActivityDate" Type="datetime" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="IsOnLine" Type="bit" />
+          <Property Name="IsLockedOut" Type="bit" />
+          <Property Name="LastLockedOutDate" Type="datetime" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UsersInRoles">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Rolename" />
+            <PropertyRef Name="ApplicationName" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rolename" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cards__CardHolde__5165187F">
+          <End Role="CardHolders" Type="Self.CardHolders" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardHolders">
+              <PropertyRef Name="CardHolderGUID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="CardHolderGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__CardGUI__59063A47">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardGUID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="CardGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Merchant__Billin__4CA06362">
+          <End Role="MerchantBilling" Type="Self.MerchantBilling" Multiplicity="0..1" />
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MerchantBilling">
+              <PropertyRef Name="MerchantBillingGUID" />
+            </Principal>
+            <Dependent Role="Merchant">
+              <PropertyRef Name="BillingInfo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Merchant__Pricin__4D94879B">
+          <End Role="Prices" Type="Self.Prices" Multiplicity="0..1" />
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prices">
+              <PropertyRef Name="PriceGUID" />
+            </Principal>
+            <Dependent Role="Merchant">
+              <PropertyRef Name="PricingCol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HS_CardGUID">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardGUID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="CardGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HS_MerchantGUID">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantGUID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="WhichMerchantGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MerchantGUID">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantGUID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="MerchantGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="gp_Close" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MID" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="WhereFrom" Type="char" Mode="In" />
+          <Parameter Name="MerchSeqNum" Type="varchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="gp_DailyReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MID" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="Type" Type="char" Mode="In" />
+          <Parameter Name="WhereFrom" Type="char" Mode="In" />
+          <Parameter Name="MerchSeqNum" Type="varchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="gp_GiftActivateCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Merchant" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="WhereFrom" Type="char" Mode="In" />
+          <Parameter Name="MerchSeqNum" Type="varchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+          <Parameter Name="CardToActivate" Type="varchar" Mode="In" />
+          <Parameter Name="NewCardHolder" Type="int" Mode="In" />
+          <Parameter Name="Amount" Type="decimal" Mode="In" />
+          <Parameter Name="InvoiceNum" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="gp_GiftBalanceInq" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Merchant" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="WhereFrom" Type="char" Mode="In" />
+          <Parameter Name="MerchSeqNum" Type="varchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+          <Parameter Name="CardToFind" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="gp_GiftReturn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Merchant" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="WhereFrom" Type="char" Mode="In" />
+          <Parameter Name="MerchSeqNum" Type="varchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+          <Parameter Name="CardNum" Type="varchar" Mode="In" />
+          <Parameter Name="CreditAmount" Type="decimal" Mode="In" />
+          <Parameter Name="WhyCredit" Type="nvarchar" Mode="In" />
+          <Parameter Name="InvoiceNum" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="gp_GiftSaleCommon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TransType" Type="char" Mode="In" />
+          <Parameter Name="MerchantID" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="WhereFrom" Type="char" Mode="In" />
+          <Parameter Name="MerchSeqNum" Type="varchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+          <Parameter Name="CardToSellFrom" Type="varchar" Mode="In" />
+          <Parameter Name="AmountOfSale" Type="decimal" Mode="In" />
+          <Parameter Name="SalesDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="InvoiceNum" Type="nvarchar" Mode="In" />
+          <Parameter Name="OriginalSalesTran" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="gp_GiftSellFromCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MerchantID" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="WhereFrom" Type="char" Mode="In" />
+          <Parameter Name="MerchSeqNum" Type="varchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+          <Parameter Name="CardToSellFrom" Type="varchar" Mode="In" />
+          <Parameter Name="AmountOfSale" Type="decimal" Mode="In" />
+          <Parameter Name="SalesDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="InvoiceNum" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="gp_GiftTipFromCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MerchantID" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="WhereFrom" Type="char" Mode="In" />
+          <Parameter Name="MerchSeqNum" Type="varchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+          <Parameter Name="CardToSellFrom" Type="varchar" Mode="In" />
+          <Parameter Name="AmountOfTip" Type="decimal" Mode="In" />
+          <Parameter Name="SalesDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="InvoiceNum" Type="nvarchar" Mode="In" />
+          <Parameter Name="OriginalSaleTrans" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="gp_InvoiceMerchant" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WhichMerchant" Type="int" Mode="In" />
+          <Parameter Name="TrialOrFinal" Type="int" Mode="In" />
+        </Function>
+        <Function Name="gp_ShipCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Merchant" Type="varchar" Mode="In" />
+          <Parameter Name="Clerk" Type="nvarchar" Mode="In" />
+          <Parameter Name="TerminalID" Type="varchar" Mode="In" />
+          <Parameter Name="LocalTime" Type="datetime" Mode="In" />
+          <Parameter Name="CardShipped" Type="varchar" Mode="In" />
+          <Parameter Name="TransText" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="GiftModelStoreContainer">
+          <EntitySet Name="CardHolders" EntityType="Self.CardHolders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clerks" EntityType="Self.Clerks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiftSystem" EntityType="Self.GiftSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Merchant" EntityType="Self.Merchant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MerchantBilling" EntityType="Self.MerchantBilling" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prices" EntityType="Self.Prices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cards__CardHolde__5165187F" Association="Self.FK__Cards__CardHolde__5165187F">
+            <End Role="CardHolders" EntitySet="CardHolders" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__CardGUI__59063A47" Association="Self.FK__History__CardGUI__59063A47">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Merchant__Billin__4CA06362" Association="Self.FK__Merchant__Billin__4CA06362">
+            <End Role="MerchantBilling" EntitySet="MerchantBilling" />
+            <End Role="Merchant" EntitySet="Merchant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Merchant__Pricin__4D94879B" Association="Self.FK__Merchant__Pricin__4D94879B">
+            <End Role="Prices" EntitySet="Prices" />
+            <End Role="Merchant" EntitySet="Merchant" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HS_CardGUID" Association="Self.fk_HS_CardGUID">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HS_MerchantGUID" Association="Self.fk_HS_MerchantGUID">
+            <End Role="Merchant" EntitySet="Merchant" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MerchantGUID" Association="Self.fk_MerchantGUID">
+            <End Role="Merchant" EntitySet="Merchant" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GiftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CardHolder">
+          <Key>
+            <PropertyRef Name="CardHolderGUID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardHolderGUID" Type="Guid" Nullable="false" />
+          <Property Name="EncryptedFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EncryptedLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EncryptedCardHolderName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EncryptedAddress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EncryptedAddress2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EncryptedCity" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="EncryptedPostalCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EncryptedPhone" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EncryptedEmail" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Card1" Type="Guid" />
+          <Property Name="Card2" Type="Guid" />
+          <Property Name="Card3" Type="Guid" />
+          <Property Name="Card4" Type="Guid" />
+          <Property Name="Card5" Type="Guid" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK__Cards__CardHolde__5165187F" FromRole="CardHolders" ToRole="Cards" />
+        </EntityType>
+        <EntityType Name="Card">
+          <Key>
+            <PropertyRef Name="CardGUID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardGUID" Type="Guid" Nullable="false" />
+          <Property Name="CardNumber" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CardNumLast4" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MerchantGUID" Type="Guid" />
+          <Property Name="CardHolderGUID" Type="Guid" />
+          <Property Name="Shipped" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Activated" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="GiftBalance" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="LoyaltyBalance" Type="Int32" Nullable="false" />
+          <Property Name="DateShipped" Type="DateTime" Precision="3" />
+          <Property Name="DateActivated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CardHolder" Relationship="Self.FK__Cards__CardHolde__5165187F" FromRole="Cards" ToRole="CardHolders" />
+          <NavigationProperty Name="Histories" Relationship="Self.FK__History__CardGUI__59063A47" FromRole="Cards" ToRole="History" />
+          <NavigationProperty Name="Histories1" Relationship="Self.fk_HS_CardGUID" FromRole="Cards" ToRole="History" />
+          <NavigationProperty Name="Merchant" Relationship="Self.fk_MerchantGUID" FromRole="Cards" ToRole="Merchant" />
+        </EntityType>
+        <EntityType Name="Clerk">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantGUID" Type="Guid" Nullable="false" />
+          <Property Name="ClerkID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Whom" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GiftSystem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConstantKey" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConstantValue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WhenHappened" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardGUID" Type="Guid" Nullable="false" />
+          <Property Name="WhichMerchantGUID" Type="Guid" Nullable="false" />
+          <Property Name="MerchSeqNumber" Type="Int64" />
+          <Property Name="Clerk" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WebCellOrDialup" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TerminalID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LocalTime" Type="DateTime" Precision="3" />
+          <Property Name="TransType" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ErrorCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TransactionText" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="TipAmount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="TabAmount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="CardGUID2" Type="Guid" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="SaleTransaction" Type="Int64" />
+          <NavigationProperty Name="Card" Relationship="Self.FK__History__CardGUI__59063A47" FromRole="History" ToRole="Cards" />
+          <NavigationProperty Name="Card1" Relationship="Self.fk_HS_CardGUID" FromRole="History" ToRole="Cards" />
+          <NavigationProperty Name="Merchant" Relationship="Self.fk_HS_MerchantGUID" FromRole="History" ToRole="Merchant" />
+        </EntityType>
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="MerchantGUID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantGUID" Type="Guid" Nullable="false" />
+          <Property Name="MerchantID" Type="String" MaxLength="46" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MerchantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MerchantUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeZone" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastSeqNumber" Type="Int64" Nullable="false" />
+          <Property Name="LastShiftClose" Type="DateTime" Precision="3" />
+          <Property Name="GiftActive" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SplitTender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Restaurant" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BillingCycle" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="LastBillingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastBillingNumber" Type="Int64" Nullable="false" />
+          <Property Name="BillingInfo" Type="Guid" />
+          <Property Name="PaidUpTo" Type="DateTime" Precision="0" />
+          <Property Name="EncryptedTaxID" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="PricingCol" Type="Guid" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="AskForClerkServer" Type="Int32" Nullable="false" />
+          <Property Name="ShippingAddressLine1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingAddressLine2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingAddressLine3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingAddressLine4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptHeaderLine1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptHeaderLine2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptHeaderLine3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptHeaderLine4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptHeaderLine5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptFooterLine1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiptFooterLine2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BackgroundImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActivateAmount1" Type="Int32" />
+          <Property Name="ActivateAmount2" Type="Int32" />
+          <Property Name="ActivateAmount3" Type="Int32" />
+          <Property Name="ActivateAmount4" Type="Int32" />
+          <Property Name="ActivateAmount5" Type="Int32" />
+          <Property Name="ActivateAmount6" Type="Int32" />
+          <Property Name="ActivateAmount7" Type="Int32" />
+          <Property Name="ActivateAmount8" Type="Int32" />
+          <Property Name="ActivateAmount9" Type="Int32" />
+          <Property Name="ActivateAmount10" Type="Int32" />
+          <NavigationProperty Name="Cards" Relationship="Self.fk_MerchantGUID" FromRole="Merchant" ToRole="Cards" />
+          <NavigationProperty Name="Histories" Relationship="Self.fk_HS_MerchantGUID" FromRole="Merchant" ToRole="History" />
+          <NavigationProperty Name="MerchantBilling" Relationship="Self.FK__Merchant__Billin__4CA06362" FromRole="Merchant" ToRole="MerchantBilling" />
+          <NavigationProperty Name="Price" Relationship="Self.FK__Merchant__Pricin__4D94879B" FromRole="Merchant" ToRole="Prices" />
+        </EntityType>
+        <EntityType Name="MerchantBilling">
+          <Key>
+            <PropertyRef Name="MerchantBillingGUID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantBillingGUID" Type="Guid" Nullable="false" />
+          <Property Name="CardType" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="EncryptedCardNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExpiryDate" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="CVV" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="EncryptedRouting" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EncryptedAccount" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Merchants" Relationship="Self.FK__Merchant__Billin__4CA06362" FromRole="MerchantBilling" ToRole="Merchant" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="PriceGUID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriceGUID" Type="Guid" Nullable="false" />
+          <Property Name="PricingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardPrice" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="TransactionPrice" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="SupportTransactionPrice" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="GiftMonthlyFee" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="CardholderMonthlyFee" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="CardHolderPercentageCharge" Type="Int32" />
+          <Property Name="AfterXMonths" Type="Int32" />
+          <NavigationProperty Name="Merchants" Relationship="Self.FK__Merchant__Pricin__4D94879B" FromRole="Prices" ToRole="Merchant" />
+        </EntityType>
+        <Association Name="FK__Cards__CardHolde__5165187F">
+          <End Role="CardHolders" Type="Self.CardHolder" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CardHolders">
+              <PropertyRef Name="CardHolderGUID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="CardHolderGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__History__CardGUI__59063A47">
+          <End Role="Cards" Type="Self.Card" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardGUID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="CardGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HS_CardGUID">
+          <End Role="Cards" Type="Self.Card" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="CardGUID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="CardGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MerchantGUID">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantGUID" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="MerchantGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_HS_MerchantGUID">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantGUID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="WhichMerchantGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Merchant__Billin__4CA06362">
+          <End Role="MerchantBilling" Type="Self.MerchantBilling" Multiplicity="0..1" />
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MerchantBilling">
+              <PropertyRef Name="MerchantBillingGUID" />
+            </Principal>
+            <Dependent Role="Merchant">
+              <PropertyRef Name="BillingInfo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Merchant__Pricin__4D94879B">
+          <End Role="Prices" Type="Self.Price" Multiplicity="0..1" />
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prices">
+              <PropertyRef Name="PriceGUID" />
+            </Principal>
+            <Dependent Role="Merchant">
+              <PropertyRef Name="PricingCol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GiftEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CardHolders" EntityType="Self.CardHolder" />
+          <EntitySet Name="Cards" EntityType="Self.Card" />
+          <EntitySet Name="Clerks" EntityType="Self.Clerk" />
+          <EntitySet Name="GiftSystems" EntityType="Self.GiftSystem" />
+          <EntitySet Name="Histories" EntityType="Self.History" />
+          <EntitySet Name="Merchants" EntityType="Self.Merchant" />
+          <EntitySet Name="MerchantBillings" EntityType="Self.MerchantBilling" />
+          <EntitySet Name="Prices" EntityType="Self.Price" />
+          <AssociationSet Name="FK__Cards__CardHolde__5165187F" Association="Self.FK__Cards__CardHolde__5165187F">
+            <End Role="CardHolders" EntitySet="CardHolders" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK__History__CardGUI__59063A47" Association="Self.FK__History__CardGUI__59063A47">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HS_CardGUID" Association="Self.fk_HS_CardGUID">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MerchantGUID" Association="Self.fk_MerchantGUID">
+            <End Role="Merchant" EntitySet="Merchants" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="fk_HS_MerchantGUID" Association="Self.fk_HS_MerchantGUID">
+            <End Role="Merchant" EntitySet="Merchants" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Merchant__Billin__4CA06362" Association="Self.FK__Merchant__Billin__4CA06362">
+            <End Role="MerchantBilling" EntitySet="MerchantBillings" />
+            <End Role="Merchant" EntitySet="Merchants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Merchant__Pricin__4D94879B" Association="Self.FK__Merchant__Pricin__4D94879B">
+            <End Role="Prices" EntitySet="Prices" />
+            <End Role="Merchant" EntitySet="Merchants" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="GiftModel.Role" />
+          <EntitySet Name="Users" EntityType="GiftModel.User" />
+          <EntitySet Name="UsersInRoles" EntityType="GiftModel.UsersInRole" />
+          <FunctionImport Name="gp_Close" ReturnType="Collection(GiftModel.gp_Close_Result)">
+            <Parameter Name="MID" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="WhereFrom" Mode="In" Type="String" />
+            <Parameter Name="MerchSeqNum" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="gp_DailyReport" ReturnType="Collection(GiftModel.gp_DailyReport_Result)">
+            <Parameter Name="MID" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="WhereFrom" Mode="In" Type="String" />
+            <Parameter Name="MerchSeqNum" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="gp_GiftActivateCard" ReturnType="Collection(GiftModel.gp_GiftActivateCard_Result)">
+            <Parameter Name="Merchant" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="WhereFrom" Mode="In" Type="String" />
+            <Parameter Name="MerchSeqNum" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CardToActivate" Mode="In" Type="String" />
+            <Parameter Name="NewCardHolder" Mode="In" Type="Int32" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+            <Parameter Name="InvoiceNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="gp_GiftBalanceInq" ReturnType="Collection(GiftModel.gp_GiftBalanceInq_Result)">
+            <Parameter Name="Merchant" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="WhereFrom" Mode="In" Type="String" />
+            <Parameter Name="MerchSeqNum" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CardToFind" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="gp_GiftReturn" ReturnType="Collection(GiftModel.gp_GiftReturn_Result)">
+            <Parameter Name="Merchant" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="WhereFrom" Mode="In" Type="String" />
+            <Parameter Name="MerchSeqNum" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CardNum" Mode="In" Type="String" />
+            <Parameter Name="CreditAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="WhyCredit" Mode="In" Type="String" />
+            <Parameter Name="InvoiceNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="gp_GiftSaleCommon" ReturnType="Collection(GiftModel.gp_GiftSaleCommon_Result)">
+            <Parameter Name="TransType" Mode="In" Type="String" />
+            <Parameter Name="MerchantID" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="WhereFrom" Mode="In" Type="String" />
+            <Parameter Name="MerchSeqNum" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CardToSellFrom" Mode="In" Type="String" />
+            <Parameter Name="AmountOfSale" Mode="In" Type="Decimal" />
+            <Parameter Name="SalesDescription" Mode="In" Type="String" />
+            <Parameter Name="InvoiceNum" Mode="In" Type="String" />
+            <Parameter Name="OriginalSalesTran" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="gp_GiftSellFromCard" ReturnType="Collection(GiftModel.gp_GiftSellFromCard_Result)">
+            <Parameter Name="MerchantID" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="WhereFrom" Mode="In" Type="String" />
+            <Parameter Name="MerchSeqNum" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CardToSellFrom" Mode="In" Type="String" />
+            <Parameter Name="AmountOfSale" Mode="In" Type="Decimal" />
+            <Parameter Name="SalesDescription" Mode="In" Type="String" />
+            <Parameter Name="InvoiceNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="gp_GiftTipFromCard" ReturnType="Collection(GiftModel.gp_GiftTipFromCard_Result)">
+            <Parameter Name="MerchantID" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="WhereFrom" Mode="In" Type="String" />
+            <Parameter Name="MerchSeqNum" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CardToSellFrom" Mode="In" Type="String" />
+            <Parameter Name="AmountOfTip" Mode="In" Type="Decimal" />
+            <Parameter Name="SalesDescription" Mode="In" Type="String" />
+            <Parameter Name="InvoiceNum" Mode="In" Type="String" />
+            <Parameter Name="OriginalSaleTrans" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="gp_InvoiceMerchant" ReturnType="Collection(GiftModel.gp_InvoiceMerchant_Result)">
+            <Parameter Name="WhichMerchant" Mode="In" Type="Int32" />
+            <Parameter Name="TrialOrFinal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="gp_ShipCard" ReturnType="Collection(GiftModel.gp_ShipCard_Result)">
+            <Parameter Name="Merchant" Mode="In" Type="String" />
+            <Parameter Name="Clerk" Mode="In" Type="String" />
+            <Parameter Name="TerminalID" Mode="In" Type="String" />
+            <Parameter Name="LocalTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CardShipped" Mode="In" Type="String" />
+            <Parameter Name="TransText" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Rolename" />
+            <PropertyRef Name="ApplicationName" />
+          </Key>
+          <Property Name="Rolename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="LastActivityDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="IsOnLine" Type="Boolean" />
+          <Property Name="IsLockedOut" Type="Boolean" />
+          <Property Name="LastLockedOutDate" Type="DateTime" Precision="3" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Precision="3" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UsersInRole">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Rolename" />
+            <PropertyRef Name="ApplicationName" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rolename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="gp_Close_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="TranNumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="gp_DailyReport_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="GiftActive" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="LoyaltyActive" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="GiftActivates" Nullable="true" />
+          <Property Type="Decimal" Name="GiftActiveTotal" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="GiftSales" Nullable="true" />
+          <Property Type="Decimal" Name="GiftSalesTotal" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="GiftCredits" Nullable="true" />
+          <Property Type="Decimal" Name="GiftCreditTotal" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="NetGiftTotal" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Voids" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="gp_GiftActivateCard_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="Int64" Name="TranNumber" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="gp_GiftBalanceInq_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="Int64" Name="TranNumber" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="16" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="gp_GiftReturn_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="Int64" Name="TranNumber" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="16" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="gp_GiftSaleCommon_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="Int64" Name="TranNumber" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Decimal" Name="TransactionAmount" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Decimal" Name="Remainder" Nullable="true" Precision="19" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="gp_GiftSellFromCard_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="Int64" Name="TranNumber" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Decimal" Name="TransactionAmount" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Decimal" Name="Remainder" Nullable="true" Precision="19" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="gp_GiftTipFromCard_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="Int64" Name="TranNumber" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Decimal" Name="TransactionAmount" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Decimal" Name="Remainder" Nullable="true" Precision="19" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="gp_InvoiceMerchant_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="WebTransactions" Nullable="true" />
+          <Property Type="Decimal" Name="WebTransactionCost" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Int32" Name="OtherTransactions" Nullable="true" />
+          <Property Type="Decimal" Name="OtherTransactionCosts" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Int32" Name="CardsShipped" Nullable="true" />
+          <Property Type="Decimal" Name="CardCosts" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="Int32" Name="GiftTransactionCount" Nullable="true" />
+          <Property Type="Decimal" Name="GiftMonthlyFee" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Decimal" Name="TotalCosts" Nullable="true" Precision="19" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="gp_ShipCard_Result">
+          <Property Type="String" Name="ResponseCode" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ErrorCode" Nullable="true" MaxLength="5" />
+          <Property Type="Int64" Name="TranNumber" Nullable="true" />
+          <Property Type="DateTime" Name="ReceiptTime" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GiftModelStoreContainer" CdmEntityContainer="GiftEntities">
+          <EntitySetMapping Name="CardHolders">
+            <EntityTypeMapping TypeName="GiftModel.CardHolder">
+              <MappingFragment StoreEntitySet="CardHolders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CardHolderGUID" ColumnName="CardHolderGUID" />
+                <ScalarProperty Name="EncryptedFirstName" ColumnName="EncryptedFirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EncryptedLastName" ColumnName="EncryptedLastName" />
+                <ScalarProperty Name="EncryptedCardHolderName" ColumnName="EncryptedCardHolderName" />
+                <ScalarProperty Name="EncryptedAddress1" ColumnName="EncryptedAddress1" />
+                <ScalarProperty Name="EncryptedAddress2" ColumnName="EncryptedAddress2" />
+                <ScalarProperty Name="EncryptedCity" ColumnName="EncryptedCity" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="EncryptedPostalCode" ColumnName="EncryptedPostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="EncryptedPhone" ColumnName="EncryptedPhone" />
+                <ScalarProperty Name="EncryptedEmail" ColumnName="EncryptedEmail" />
+                <ScalarProperty Name="Card1" ColumnName="Card1" />
+                <ScalarProperty Name="Card2" ColumnName="Card2" />
+                <ScalarProperty Name="Card3" ColumnName="Card3" />
+                <ScalarProperty Name="Card4" ColumnName="Card4" />
+                <ScalarProperty Name="Card5" ColumnName="Card5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="GiftModel.Card">
+              <MappingFragment StoreEntitySet="Cards">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CardGUID" ColumnName="CardGUID" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CardNumLast4" ColumnName="CardNumLast4" />
+                <ScalarProperty Name="MerchantGUID" ColumnName="MerchantGUID" />
+                <ScalarProperty Name="CardHolderGUID" ColumnName="CardHolderGUID" />
+                <ScalarProperty Name="Shipped" ColumnName="Shipped" />
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
+                <ScalarProperty Name="GiftBalance" ColumnName="GiftBalance" />
+                <ScalarProperty Name="LoyaltyBalance" ColumnName="LoyaltyBalance" />
+                <ScalarProperty Name="DateShipped" ColumnName="DateShipped" />
+                <ScalarProperty Name="DateActivated" ColumnName="DateActivated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clerks">
+            <EntityTypeMapping TypeName="GiftModel.Clerk">
+              <MappingFragment StoreEntitySet="Clerks">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MerchantGUID" ColumnName="MerchantGUID" />
+                <ScalarProperty Name="ClerkID" ColumnName="ClerkID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Whom" ColumnName="Whom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GiftSystems">
+            <EntityTypeMapping TypeName="GiftModel.GiftSystem">
+              <MappingFragment StoreEntitySet="GiftSystem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ConstantKey" ColumnName="ConstantKey" />
+                <ScalarProperty Name="ConstantValue" ColumnName="ConstantValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="GiftModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WhenHappened" ColumnName="WhenHappened" />
+                <ScalarProperty Name="CardGUID" ColumnName="CardGUID" />
+                <ScalarProperty Name="WhichMerchantGUID" ColumnName="WhichMerchantGUID" />
+                <ScalarProperty Name="MerchSeqNumber" ColumnName="MerchSeqNumber" />
+                <ScalarProperty Name="Clerk" ColumnName="Clerk" />
+                <ScalarProperty Name="WebCellOrDialup" ColumnName="WebCellOrDialup" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="LocalTime" ColumnName="LocalTime" />
+                <ScalarProperty Name="TransType" ColumnName="TransType" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="TransactionText" ColumnName="TransactionText" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TipAmount" ColumnName="TipAmount" />
+                <ScalarProperty Name="TabAmount" ColumnName="TabAmount" />
+                <ScalarProperty Name="CardGUID2" ColumnName="CardGUID2" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="SaleTransaction" ColumnName="SaleTransaction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Merchants">
+            <EntityTypeMapping TypeName="GiftModel.Merchant">
+              <MappingFragment StoreEntitySet="Merchant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MerchantGUID" ColumnName="MerchantGUID" />
+                <ScalarProperty Name="MerchantID" ColumnName="MerchantID" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="MerchantUserName" ColumnName="MerchantUserName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="LastSeqNumber" ColumnName="LastSeqNumber" />
+                <ScalarProperty Name="LastShiftClose" ColumnName="LastShiftClose" />
+                <ScalarProperty Name="GiftActive" ColumnName="GiftActive" />
+                <ScalarProperty Name="SplitTender" ColumnName="SplitTender" />
+                <ScalarProperty Name="Restaurant" ColumnName="Restaurant" />
+                <ScalarProperty Name="BillingCycle" ColumnName="BillingCycle" />
+                <ScalarProperty Name="LastBillingDate" ColumnName="LastBillingDate" />
+                <ScalarProperty Name="LastBillingNumber" ColumnName="LastBillingNumber" />
+                <ScalarProperty Name="BillingInfo" ColumnName="BillingInfo" />
+                <ScalarProperty Name="PaidUpTo" ColumnName="PaidUpTo" />
+                <ScalarProperty Name="EncryptedTaxID" ColumnName="EncryptedTaxID" />
+                <ScalarProperty Name="PricingCol" ColumnName="PricingCol" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="AskForClerkServer" ColumnName="AskForClerkServer" />
+                <ScalarProperty Name="ShippingAddressLine1" ColumnName="ShippingAddressLine1" />
+                <ScalarProperty Name="ShippingAddressLine2" ColumnName="ShippingAddressLine2" />
+                <ScalarProperty Name="ShippingAddressLine3" ColumnName="ShippingAddressLine3" />
+                <ScalarProperty Name="ShippingAddressLine4" ColumnName="ShippingAddressLine4" />
+                <ScalarProperty Name="ReceiptHeaderLine1" ColumnName="ReceiptHeaderLine1" />
+                <ScalarProperty Name="ReceiptHeaderLine2" ColumnName="ReceiptHeaderLine2" />
+                <ScalarProperty Name="ReceiptHeaderLine3" ColumnName="ReceiptHeaderLine3" />
+                <ScalarProperty Name="ReceiptHeaderLine4" ColumnName="ReceiptHeaderLine4" />
+                <ScalarProperty Name="ReceiptHeaderLine5" ColumnName="ReceiptHeaderLine5" />
+                <ScalarProperty Name="ReceiptFooterLine1" ColumnName="ReceiptFooterLine1" />
+                <ScalarProperty Name="ReceiptFooterLine2" ColumnName="ReceiptFooterLine2" />
+                <ScalarProperty Name="BackgroundImageName" ColumnName="BackgroundImageName" />
+                <ScalarProperty Name="ActivateAmount1" ColumnName="ActivateAmount1" />
+                <ScalarProperty Name="ActivateAmount2" ColumnName="ActivateAmount2" />
+                <ScalarProperty Name="ActivateAmount3" ColumnName="ActivateAmount3" />
+                <ScalarProperty Name="ActivateAmount4" ColumnName="ActivateAmount4" />
+                <ScalarProperty Name="ActivateAmount5" ColumnName="ActivateAmount5" />
+                <ScalarProperty Name="ActivateAmount6" ColumnName="ActivateAmount6" />
+                <ScalarProperty Name="ActivateAmount7" ColumnName="ActivateAmount7" />
+                <ScalarProperty Name="ActivateAmount8" ColumnName="ActivateAmount8" />
+                <ScalarProperty Name="ActivateAmount9" ColumnName="ActivateAmount9" />
+                <ScalarProperty Name="ActivateAmount10" ColumnName="ActivateAmount10" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MerchantBillings">
+            <EntityTypeMapping TypeName="GiftModel.MerchantBilling">
+              <MappingFragment StoreEntitySet="MerchantBilling">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MerchantBillingGUID" ColumnName="MerchantBillingGUID" />
+                <ScalarProperty Name="CardType" ColumnName="CardType" />
+                <ScalarProperty Name="EncryptedCardNumber" ColumnName="EncryptedCardNumber" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="EncryptedRouting" ColumnName="EncryptedRouting" />
+                <ScalarProperty Name="EncryptedAccount" ColumnName="EncryptedAccount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prices">
+            <EntityTypeMapping TypeName="GiftModel.Price">
+              <MappingFragment StoreEntitySet="Prices">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PriceGUID" ColumnName="PriceGUID" />
+                <ScalarProperty Name="PricingName" ColumnName="PricingName" />
+                <ScalarProperty Name="CardPrice" ColumnName="CardPrice" />
+                <ScalarProperty Name="TransactionPrice" ColumnName="TransactionPrice" />
+                <ScalarProperty Name="SupportTransactionPrice" ColumnName="SupportTransactionPrice" />
+                <ScalarProperty Name="GiftMonthlyFee" ColumnName="GiftMonthlyFee" />
+                <ScalarProperty Name="CardholderMonthlyFee" ColumnName="CardholderMonthlyFee" />
+                <ScalarProperty Name="CardHolderPercentageCharge" ColumnName="CardHolderPercentageCharge" />
+                <ScalarProperty Name="AfterXMonths" ColumnName="AfterXMonths" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="GiftModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="Rolename" ColumnName="Rolename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="GiftModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="LastLockedOutDate" ColumnName="LastLockedOutDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsOnLine" ColumnName="IsOnLine" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersInRoles">
+            <EntityTypeMapping TypeName="GiftModel.UsersInRole">
+              <MappingFragment StoreEntitySet="UsersInRoles">
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="Rolename" ColumnName="Rolename" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="gp_Close" FunctionName="GiftModel.Store.gp_Close">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_Close_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+                <ScalarProperty Name="TranNumber" ColumnName="TranNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_DailyReport" FunctionName="GiftModel.Store.gp_DailyReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_DailyReport_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+                <ScalarProperty Name="GiftActive" ColumnName="GiftActive" />
+                <ScalarProperty Name="LoyaltyActive" ColumnName="LoyaltyActive" />
+                <ScalarProperty Name="GiftActivates" ColumnName="GiftActivates" />
+                <ScalarProperty Name="GiftActiveTotal" ColumnName="GiftActiveTotal" />
+                <ScalarProperty Name="GiftSales" ColumnName="GiftSales" />
+                <ScalarProperty Name="GiftSalesTotal" ColumnName="GiftSalesTotal" />
+                <ScalarProperty Name="GiftCredits" ColumnName="GiftCredits" />
+                <ScalarProperty Name="GiftCreditTotal" ColumnName="GiftCreditTotal" />
+                <ScalarProperty Name="NetGiftTotal" ColumnName="NetGiftTotal" />
+                <ScalarProperty Name="Voids" ColumnName="Voids" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_GiftActivateCard" FunctionName="GiftModel.Store.gp_GiftActivateCard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_GiftActivateCard_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="TranNumber" ColumnName="TranNumber" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_GiftBalanceInq" FunctionName="GiftModel.Store.gp_GiftBalanceInq">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_GiftBalanceInq_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="TranNumber" ColumnName="TranNumber" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_GiftReturn" FunctionName="GiftModel.Store.gp_GiftReturn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_GiftReturn_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="TranNumber" ColumnName="TranNumber" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_GiftSaleCommon" FunctionName="GiftModel.Store.gp_GiftSaleCommon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_GiftSaleCommon_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="TranNumber" ColumnName="TranNumber" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+                <ScalarProperty Name="Remainder" ColumnName="Remainder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_GiftSellFromCard" FunctionName="GiftModel.Store.gp_GiftSellFromCard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_GiftSellFromCard_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="TranNumber" ColumnName="TranNumber" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+                <ScalarProperty Name="Remainder" ColumnName="Remainder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_GiftTipFromCard" FunctionName="GiftModel.Store.gp_GiftTipFromCard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_GiftTipFromCard_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="TranNumber" ColumnName="TranNumber" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+                <ScalarProperty Name="Remainder" ColumnName="Remainder" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_InvoiceMerchant" FunctionName="GiftModel.Store.gp_InvoiceMerchant">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_InvoiceMerchant_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+                <ScalarProperty Name="WebTransactions" ColumnName="WebTransactions" />
+                <ScalarProperty Name="WebTransactionCost" ColumnName="WebTransactionCost" />
+                <ScalarProperty Name="OtherTransactions" ColumnName="OtherTransactions" />
+                <ScalarProperty Name="OtherTransactionCosts" ColumnName="OtherTransactionCosts" />
+                <ScalarProperty Name="CardsShipped" ColumnName="CardsShipped" />
+                <ScalarProperty Name="CardCosts" ColumnName="CardCosts" />
+                <ScalarProperty Name="GiftTransactionCount" ColumnName="GiftTransactionCount" />
+                <ScalarProperty Name="GiftMonthlyFee" ColumnName="GiftMonthlyFee" />
+                <ScalarProperty Name="TotalCosts" ColumnName="TotalCosts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="gp_ShipCard" FunctionName="GiftModel.Store.gp_ShipCard">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GiftModel.gp_ShipCard_Result">
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="TranNumber" ColumnName="TranNumber" />
+                <ScalarProperty Name="ReceiptTime" ColumnName="ReceiptTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

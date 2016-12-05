@@ -1,0 +1,22 @@
+﻿@using Professional_Gift_Card_System.Models
+@model TransactionModel
+@using Resources
+
+<div>
+    @Html.HiddenFor(m => m.MerchantID)
+    @Html.HiddenFor(m => m.ClerkID)
+
+    @DisplayItems.MerchantID 
+    @Html.DisplayFor(m => m.MerchantID)
+
+    @if (Model.ClerkID != null)
+    {
+        if (Model.ClerkID.Length > 0)
+        {
+            <br />
+            @DisplayItems.ClerkID
+            @Html.DisplayFor(m => m.ClerkID)
+        }
+    }
+    <br />
+</div>

@@ -1,0 +1,50 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<GiftCardBalance>
+@{
+    ViewBag.Title = "Balance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <h2>Card Balances</h2>
+
+    <table>
+        <tr>
+            <th>
+            Card Number
+            </th>
+            <th>
+            Balance
+            </th>
+            <th>
+            Points
+            </th>
+        </tr>
+
+    @{ foreach (var item in Model)
+       { 
+    
+        <tr>
+            <td>
+                            @item.CardNumber
+            </td>
+            <td>
+                            @item.GiftBalance
+            </td>
+            <td>
+                            @item.LoyaltyPointBalance
+            </td>
+        </tr>
+    
+       } }
+
+    </table>
+
+    <div>
+        @Html.ActionLink("Back to Main Page", "Index")
+    </div>
+
+
+
+

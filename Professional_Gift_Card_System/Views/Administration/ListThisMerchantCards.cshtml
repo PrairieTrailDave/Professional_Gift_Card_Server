@@ -1,0 +1,25 @@
+﻿@model IEnumerable<String>
+
+@{
+    ViewBag.Title = "ListThisMerchantCards";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>This Merchant's Cards</h2>
+
+<table>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item)
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to Main Page", "Back")
+</div>
+

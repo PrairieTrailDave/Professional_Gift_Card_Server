@@ -1,0 +1,72 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<CardHolderHistoryItem>
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <h2>Card Holder History</h2>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>
+                When
+            </th>
+            <th>
+                Where
+            </th>
+            <th>
+                What Happened
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Points Awarded
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+
+    @{ foreach (var item in Model) { 
+    
+        <tr>
+            <td>
+            </td>
+            <td>
+                @item.When
+            </td>
+            <td>
+                @item.Where
+            </td>
+            <td>
+                @item.WhatHappened
+            </td>
+            <td>
+                @item.Amount
+            </td>
+            <td>
+                @item.PointsAwarded
+            </td>
+            <td>
+                @item.Description
+            </td>
+        </tr>
+    
+     } 
+     }
+
+    </table>
+
+     <div>
+        @Html.ActionLink("Back to Main Page", "Index")
+    </div>
+
+
+
+

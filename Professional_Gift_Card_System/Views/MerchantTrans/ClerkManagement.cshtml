@@ -1,0 +1,57 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<ClerkModel>
+
+
+
+@{
+    ViewBag.Title = "Clerk Management";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+
+    <h2>ManageClerks</h2>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>
+                ClerkID
+            </th>
+            <th>
+                ClerkName
+            </th>
+        </tr>
+
+    @{ foreach (var item in Model) { 
+    
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "ClerkEdit", new { id=item.DatabaseID}) |
+                @Html.ActionLink("Delete", "ClerkDelete", new { id = item.DatabaseID }) |
+                @Html.ActionLink("Reset Password", "ClerkEdit", new { id = item.DatabaseID })
+            </td>
+            <td>
+                @item.ClerkID
+            </td>
+            <td>
+                @item.ClerkName
+            </td>
+        </tr>
+    
+     } }
+
+    </table>
+
+    <p>
+        @Html.ActionLink("Create New", "ClerkAdd")
+    </p>
+
+    <p>
+        @Html.ActionLink("Back to Index", "Back2")
+    </p>
+
+
+
+
+

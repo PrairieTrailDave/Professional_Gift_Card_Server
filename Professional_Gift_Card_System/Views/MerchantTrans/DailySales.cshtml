@@ -1,0 +1,37 @@
+﻿@using Professional_Gift_Card_System.Models
+@model DailySalesModel
+
+
+@{
+    ViewBag.Title = "DailySales";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+
+
+    <h2>Daily Sales Report</h2>
+
+    <p>
+        Click on Display Report 
+    </p>
+
+    @using (Html.BeginForm()) { 
+        @Html.ValidationSummary(true, "Daily report was unsuccessful. Please correct the errors and try again.")
+        @Html.HiddenFor(m => m.LocalTime)
+        <div>
+
+            <input style="border-style: solid; border-width : 1px 1px 1px 1px; border-top: 1px solid #CCCCCC; border-right: 1px solid #333333; border-bottom: 1px solid #333333;" 
+            type="submit" value="Display Report" onclick="SaveTime();" />
+
+        </div>
+     } 
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+
+
+

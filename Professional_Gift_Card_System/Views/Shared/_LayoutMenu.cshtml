@@ -1,0 +1,10 @@
+﻿ @if (HttpContext.Current.Session["WhiteLabel"] == "")
+ {
+ 
+       <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Home", HttpContext.Current.Session["Index"].ToString(), "Home")</li>
+            <li>@Html.ActionLink("System-Overview", "Overview", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+       </ul>
+ }

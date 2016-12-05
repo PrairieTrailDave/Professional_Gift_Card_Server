@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b49478ccc8f4cf0a938053df2107f2b" Name="Diagram1">
+        <EntityTypeShape EntityType="GiftModel.CardHolder" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftModel.Card" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftModel.Clerk" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftModel.GiftSystem" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftModel.History" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftModel.Merchant" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftModel.MerchantBilling" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftModel.Price" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="GiftModel.FK__Cards__CardHolde__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="GiftModel.FK__History__CardGUI__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="GiftModel.fk_HS_CardGUID" ManuallyRouted="false" />
+        <AssociationConnector Association="GiftModel.fk_MerchantGUID" ManuallyRouted="false" />
+        <AssociationConnector Association="GiftModel.fk_HS_MerchantGUID" ManuallyRouted="false" />
+        <AssociationConnector Association="GiftModel.FK__Merchant__Billin__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="GiftModel.FK__Merchant__Pricin__4D94879B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GiftModel.Role" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GiftModel.User" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="GiftModel.UsersInRole" Width="1.5" PointX="5.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

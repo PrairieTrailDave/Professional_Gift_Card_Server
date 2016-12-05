@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Admin Functions";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <h2>System Administration</h2>
+
+    <h2>@ViewData["Message"]</h2>
+
+
+    <h2>Manage Pricings</h2>
+    <p>
+    @Html.ActionLink("Manage Merchant Pricing", "ManagePricings", "Administration")
+    </p>
+
+    <h2>Manage Merchants</h2>
+    <p>
+        @Html.ActionLink("Manage Merchants", "SelectMerchantForEdit", "Merchant")
+        <br />
+        @Html.ActionLink("Review Merchant Balances", "MerchantBalances", "Administration")
+   </p>
+
+    <h2>Manage Card Inventory</h2>
+    <p>
+        @Html.ActionLink("Receive Cards Into Inventory", "ReceiveCards", "Administration")
+        <br />
+        @Html.ActionLink("Ship Cards to Merchant", "ShipCards", "Administration")
+        <br />
+        @Html.ActionLink("Receive and Ship Batch Cards to Merchant", "AddBatchCards", "Administration")
+        <br />
+        @Html.ActionLink("View Card History", "Cardhistory", "Administration")
+        <br />
+        @Html.ActionLink("Find CardHolder", "CardholderLookup", "CustomerSupport")
+        <br />
+        @Html.ActionLink("List cards for merchant", "ListMerchantCards", "Administration")
+
+
+        <br />
+        <br />
+        <br />
+
+        @Html.ActionLink("Manage customer service reps", "ServiceReps", "Administration")
+
+        <br />
+        <br />
+
+        <br />
+        <h2>Reports</h2>
+
+        @Html.ActionLink("Summary Report", "ReportSummary", "Administration")
+        <br />
+        @Html.ActionLink("Transaction Counts Report", "ReportTransactionCounts", "Administration")
+        <br />
+
+        <br />
+        <br />
+
+        <h2>Log Files</h2>
+        @Html.ActionLink("Select a log to display", "SelectLog", "Administration")
+
+        <br />
+    </p>
+
+

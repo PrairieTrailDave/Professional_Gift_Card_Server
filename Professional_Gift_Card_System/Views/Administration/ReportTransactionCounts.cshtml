@@ -1,0 +1,82 @@
+﻿@using Professional_Gift_Card_System.Models
+@model ReportTransactionCountModel
+
+@{
+    ViewBag.Title = "ShowTransactionCounts";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Show Transaction Counts</h2>
+
+<div class="editor-field">
+    By Whom:
+    @(Html.DropDownListFor(model => model.ByWhat,
+                new SelectList(new[] {
+                    "", "Chain", "MerchantGroup", "Reseller" }, Model.ByWhat), new { id = "ByWhat", onchange = "reloadMe();" }))
+</div>
+
+<br />
+
+
+<div class="editor-field">
+    Period:
+    @(Html.DropDownListFor(model => model.Period,
+                new SelectList(new[] {
+                    "Daily", "Monthly", "Quarter","Annual" }, Model.Period), new { id = "Period", onchange = "reloadMe();" }))
+</div>
+
+<br />
+<div class="editor-field">
+    For which date:
+    @Html.EditorFor(model => model.When)
+</div>
+
+
+<br />
+
+<div id="printableArea">
+<pre>
+@{
+    List<String> rLines;
+    Professional_Gift_Card_System.Models.Receipt Report;
+    Report = (Professional_Gift_Card_System.Models.Receipt) TempData["Report"];
+    if (Report != null)
+    {
+        rLines = Report.Lines;
+        foreach (String rline in rLines)
+        {
+<br />@rline
+        }
+    }
+	else
+	{
+        <text>Nothing to Report</text>
+	}
+    		
+	
+ }
+</pre>
+</div>
+
+<div>
+    @Html.ActionLink("Back to Main Page", "Index", "Administration")
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+            $(".datepick").datepicker({
+                onSelect: function (dateText, inst) { reloadMe(dateText);}
+            });
+            function reloadMe(w) {
+                var Per = document.getElementById("Period");
+                var ByWhat = document.getElementById("ByWhat");
+                var Options = "";
+                if (w) Options = "when=" + w;
+                if (Per) Options = Options + "&Period=" + Per.value;
+                if (ByWhat) Options = Options + "&ByWhat=" + ByWhat.value;
+                window.location.href = "ReportTransactionCounts?" + Options;
+            }
+
+    </script>
+}

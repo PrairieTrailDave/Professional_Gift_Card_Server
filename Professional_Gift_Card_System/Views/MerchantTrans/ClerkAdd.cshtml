@@ -1,0 +1,61 @@
+﻿@using Professional_Gift_Card_System.Models
+@model AddClerkModel
+
+
+@{
+    ViewBag.Title = "AddClerk";
+    Layout = "~/Views/Shared/_MerchantLayout.cshtml";
+}
+
+
+
+    <h2>AddClerk</h2>
+
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true, "Please correct the errors and try again", new { @class = "text-danger" } )
+
+        <fieldset>
+            <legend>Fields</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ClerkID)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ClerkID)
+                @Html.ValidationMessageFor(model => model.ClerkID)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ClerkName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ClerkName)
+                @Html.ValidationMessageFor(model => model.ClerkName)
+            </div>
+            <p>
+
+            </p>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ClerkPassword)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ClerkPassword)
+                <input type="submit" name="SuggestValues" value="Suggest Values"  />
+                @Html.ValidationMessageFor(model => model.ClerkPassword)
+            </div>
+            
+            <p>
+                <input type="submit" name="ClerkAdd" value="Add Clerk" />
+            </p>
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to List", "Back")
+    </div>
+
+
+
+

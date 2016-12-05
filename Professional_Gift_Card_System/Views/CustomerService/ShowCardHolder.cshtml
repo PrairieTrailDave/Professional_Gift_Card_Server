@@ -1,0 +1,162 @@
+﻿@using Professional_Gift_Card_System.Models
+@model EditCardHolderModel
+
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <h2>Show CardHolder</h2>
+        
+        <fieldset>
+            <legend>Fields</legend>
+        <table>
+        <tr>
+        <td>
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.FirstName)
+                </div>
+        </td>
+        <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(m => m.FirstName)
+                </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.LastName)
+                </div>
+        </td>
+        <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(m => m.LastName)
+                </div>
+         </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CellPhoneNumber)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.CellPhoneNumber)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+               
+                <div class="editor-label">
+                    @Html.LabelFor(m => m.Email)
+                </div>
+        </td>
+        <td>
+                <div class="editor-field">
+                    @Html.DisplayFor(m => m.Email)
+                </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.Address1)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.Address2)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.City)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.City)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.State)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.State)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Country)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.Country)
+            </div>
+        </td>
+        </tr>
+
+        <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PostalCode)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.PostalCode)
+            </div>
+        </td>
+        </tr>
+
+        </table>            
+                
+            
+        </fieldset>
+
+     } 
+
+    <div>
+        @Html.ActionLink("Back to Main Page", "Index")
+    </div>
+
+
+
+

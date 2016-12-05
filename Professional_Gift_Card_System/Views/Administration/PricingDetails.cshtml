@@ -1,0 +1,125 @@
+﻿@using Professional_Gift_Card_System.Models
+@model EditPriceModel
+
+
+@{
+    ViewBag.Title = "Pricing Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+    <h2>Pricing Details</h2>
+
+    <fieldset>
+        <legend>Fields</legend>
+        
+       <table>
+        <tr>
+        <td>
+        <div class="display-label">ID</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.DatabaseID</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">PricingName</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.PricingName</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">CardPrice</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.CardPrice</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">TransactionPrice</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.TransactionPrice</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">SupportTransactionPrice</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.SupportTransactionPrice</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">DialupTransactionPrice</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.DialupTransactionPrice</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">Gift MonthlyFee</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.GiftMonthlyFee</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">Loyalty MonthlyFee</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.LoyaltyMonthlyFee</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">CardholderMonthlyFee</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.CardholderMonthlyFee</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">CardHolderPercentageCharge</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.CardHolderPercentageCharge</div>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <div class="display-label">AfterXMonths</div>
+        </td>
+        <td>
+        <div class="display-field">@Model.AfterXMonths</div>
+        </td>
+        </tr>
+        </table>
+       
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "EditPricing", new { id=Model.DatabaseID }) |
+        @Html.ActionLink("Back to Main Page", "ManagePricings")
+    </p>
+
+
+
+

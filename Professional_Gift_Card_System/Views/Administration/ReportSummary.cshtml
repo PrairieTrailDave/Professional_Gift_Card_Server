@@ -1,0 +1,140 @@
+﻿@using Professional_Gift_Card_System.Models
+@model SummaryReportingData
+
+@{
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Reports</h2>
+
+<div class="editor-field">
+    Period:
+    @(Html.DropDownListFor(model => model.Period,
+                new SelectList(new[] { 
+                    "Daily", "Monthly", "Quarter","Annual" }, Model.Period), new { id="Period", onchange="reloadMe();"}))
+</div>
+
+<br />
+<div class="editor-field">
+    For which date:
+    @Html.EditorFor(model => model.When)
+</div>
+
+<div class="container">
+
+    <div id="Filters" class="col-md-4">
+
+        Filters <br />
+        <br />
+        By Chain
+        <br />
+        @(Html.DropDownListFor(model => model.WhichChain, Model.Chains, new { onchange="ReportByChain(this.value);"}))
+        <br />
+        <br />
+        By Merchant Group
+        <br />
+        @(Html.DropDownListFor(model => model.WhichGroup,
+                            Model.MerchantGroups, new { onchange = "ReportByGroup(this.value);" }))
+        <br />
+        <br />
+        By Resellers
+        <br />
+        @(Html.DropDownListFor(model => model.WhichReseller, Model.Resellers, new { onchange = "ReportByReseller(this.value);" }))
+    </div>
+
+    <div id="printArea" class="col-md-6">
+        Summary Report
+        <br />
+        Gift Transactions     <br />
+        Card Activations<br />
+        Sales<br />
+        Returns<br />
+        Balance Inquiries<br />
+        <br />
+        Loyalty Transactions  (type, count, points) <br />
+        Sales<br />
+        Returns<br />
+        Visits<br />
+        Bonus Awarded Points<br />
+        Rewards Purchased<br />
+        Redemptions<br />
+        Rewards Claimed<br />
+        <br />
+        Voids
+
+    </div>
+
+</div>
+<div>
+    @Html.ActionLink("Back to Main Page", "Index", "Administration")
+</div>
+
+
+
+    @section Scripts {
+        <script type="text/javascript">
+            var ReportData = @Html.Raw(Json.Encode(Model.ReportData))
+            PrintReport();
+            $(".datepick").datepicker({
+                onSelect: function (dateText, inst) { reloadMe(dateText);}
+            });
+            function reloadMe(w) {
+                var Per = document.getElementById("Period");
+                var Options = "";
+                if (w) Options = "when=" + w;
+                if (Per) Options = Options + "&Period=" + Per.value;
+                window.location.href = "ReportSummary?" + Options;
+            }
+            function ReportByChain(ch) {
+                var Per = document.getElementById("Period");
+                var Options = "ChainSelected=" + ch;
+                if (Per) Options = Options + "&Period=" + Per.value;
+                window.location.href = "ReportSummary?" + Options;
+            }
+            function ReportByGroup(ch) {
+                var Per = document.getElementById("Period");
+                var Options = "ChainSelected=" + ch;
+                if (Per) Options = Options + "&Period=" + Per.value;
+                window.location.href = "ReportSummary?" + Options;
+            }
+            function ReportByReseller(ch) {
+                var Per = document.getElementById("Period");
+                var Options = "Reseller=" + ch;
+                if (Per) Options = Options + "&Period=" + Per.value;
+                window.location.href = "ReportSummary?" + Options;
+            }
+
+            function PrintReport() {
+
+
+                var PrintArea = document.getElementById("printArea");
+                PrintArea.innerHTML = "";
+
+                var NewReport = "<pre>Summary Report<br />" +
+                    "Gift Transactions <br />" +
+                    FormatReportLine("Card Activations", ReportData.GiftActivations, ReportData.GiftActivationAmount.toString()) + "<br />" +
+                    FormatReportLine("Sales", ReportData.GiftSales, ReportData.GiftSalesAmount.toString()) + "<br />" +
+                    FormatReportLine("Returns", ReportData.GiftCredits, ReportData.GiftCreditAmount.toString()) + "<br />" +
+                    FormatReportLine("Balance Inquiries", ReportData.GiftBalanceInquiries.toString()) + "<br />" +
+                    "<br />" +
+                    "Loyalty Transactions  (type, count, points) <br />" +
+                    FormatLoyaltyLine("Sales", ReportData.LoyaltySales, ReportData.LoyaltySalesPoints) + "<br />" +
+                    FormatLoyaltyLine("Returns", ReportData.LoyaltyReturns, ReportData.LoyaltyReturnPoints) + "<br />" +
+                    FormatLoyaltyLine("Visits", ReportData.LoyaltyVisits, ReportData.LoyaltyVisitPoints) + "<br />" +
+                    FormatLoyaltyLine("Bonus Awarded Points", ReportData.LoyaltyBonusAwards, ReportData.LoyaltyBonusAwardPoints) + "<br />" +
+                    FormatLoyaltyLine("Rewards Purchased", ReportData.LoyaltyPurchaseRewards, ReportData.LoyaltyPurchasePointsUsed) + "<br />" +
+                    FormatLoyaltyLine("Redemptions", ReportData.LoyaltyRedemptions, ReportData.LoyaltyRedemptionPoints) + "<br />" +
+                    FormatLoyaltyLine("Rewards Claimed", ReportData.LoyaltyRewardsClaimed) + "<br />" +
+                    "<br />" +
+                    FormatReportLine("Voids", ReportData.Voids);
+
+                PrintArea.innerHTML = NewReport;
+            }
+            function FormatReportLine(heading, count, amount) { if(!amount) amount=""; return LeftJustify(heading, 30) + RightJustify(count.toString(), 4) + RightJustify(FormatAmount(amount.toString()), 9);}
+            function FormatLoyaltyLine(heading, count, points) { if (!points) points = "0"; if (!count) count = 0;return LeftJustify(heading, 30) + RightJustify(count.toString(), 4) + RightJustify(points.toString(), 9); }
+            function LeftJustify(str, len) { var fill = []; while (fill.length + str.length < len) { fill[fill.length] = ' '; } return str + fill.join('');; }
+            function RightJustify(str, len) { if (!str) str = ""; var fill = []; while (fill.length + str.length < len) { fill[fill.length] = ' '; } return fill.join('') + str}
+
+        </script>
+    }

@@ -1,0 +1,51 @@
+﻿@using Professional_Gift_Card_System.Models
+@model IEnumerable<MerchantModel>
+
+@{
+    ViewBag.Title = "ListMerchantCards";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>List the cards for a Merchant</h2>
+
+<p>
+Select which merchant to list the cards for
+</p>
+                            
+<table>
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.MerchantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @Html.ActionLink("Select", "ListThisMerchantCards", new { MerchantID = item.MerchantID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MerchantName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+    </tr>
+}
+
+
+</table>
+<div>
+    @Html.ActionLink("Back to Main Page", "Back")
+</div>
+

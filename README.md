@@ -6,6 +6,7 @@ architectural differences as well as functional differences between this system 
 other systems on this source code site.
 
 This server has:
+
      Runs on Azure Database as a Service
      PCI level Encryption of important data in the database – so that when (not if) the database
 	 is hacked, the hacker can’t use the information. 

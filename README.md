@@ -1,3 +1,4 @@
+
 Professional Gift Card Server
 
 Why call this system a professional server? Because this system is a reduced function version 
@@ -9,6 +10,7 @@ This server has:
      Runs on Azure Database as a Service
      PCI level Encryption of important data in the database – so that when (not if) the database
 	 is hacked, the hacker can’t use the information. 
+
           Encryption of Card numbers
           Encryption of important cardholder data
           Encryption of important merchant data

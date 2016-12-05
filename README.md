@@ -46,16 +46,20 @@ Three tier architecture with controllers instantiating business objects and
 calling methods which call Data Access Objects to manipulate the database.
 
 SQL Stored procedures for the transactions
+
 SQL unit tests
 
 We got started on Internationalization by a number of the error messages are stored in resource files
+
 Supporting terminal ID’s for multi-lane stores
+
 Supporting multiple time zones through merchant local time stamp 
 
 Will there be bugs in this system? I would expect so. All we did to generate this code base was 
 to take our existing system, pull out a lot of stuff, and make sure that it compiled. We did 
 not run any real testing on the results to see if we caught all the bugs. I’m sure that 
 something got messed up in this process.
+
 People may also object to this using the old forms authentication. However, that is solid.
 
 

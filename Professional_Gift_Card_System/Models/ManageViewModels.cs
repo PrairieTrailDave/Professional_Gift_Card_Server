@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
+//using Microsoft.Owin.Security;
 
 namespace Professional_Gift_Card_System.Models
 {
@@ -17,7 +17,7 @@ namespace Professional_Gift_Card_System.Models
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
-        public IList<AuthenticationDescription> OtherLogins { get; set; }
+//        public IList<AuthenticationDescription> OtherLogins { get; set; }
     }
 
     public class FactorViewModel

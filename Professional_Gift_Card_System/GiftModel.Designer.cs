@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Products\ProfessionalGift\Professional_Gift_Card_System\GiftModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Products\Professional_Gift_Card_Server\Professional_Gift_Card_System\GiftModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
